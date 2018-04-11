@@ -5,26 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class EditPairActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_edit_pair);
     }
 
-    public void viewMatchMade(View view) {
-        Intent intent = new Intent(this, MatchActivity.class);
-        startActivity(intent);
-    }
-
-    public void deleteMe() {
-        String s = "This is a dummy for testing purposes";
-        String y = "av";
-
-    }
-
-    public void viewPairInfo (View view) {
+    public void savePairInfo(View view) {
         Intent intent = new Intent(this, ViewPairActivity.class);
         startActivity(intent);
     }
