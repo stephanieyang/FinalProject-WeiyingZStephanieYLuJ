@@ -18,12 +18,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void deleteMe() {
-        String s = "This is a dummy for testing purposes";
-        String y = "av";
-
-    }
-
     public void viewPairInfo (View view) {
         Intent intent = new Intent(this, ViewPairActivity.class);
         startActivity(intent);
