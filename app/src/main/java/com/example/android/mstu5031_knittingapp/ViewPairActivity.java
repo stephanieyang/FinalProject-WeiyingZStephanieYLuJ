@@ -17,4 +17,11 @@ public class ViewPairActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EditPairActivity.class);
         startActivity(intent);
     }
+
+    public void deletePairInfo(View view) {
+        //Intent intent = new Intent(this, ViewPairActivity.class);
+        Intent intent = new Intent(this, LibraryViewActivity.class);
+        intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_DELETED);
+        startActivity(intent);
+    }
 }

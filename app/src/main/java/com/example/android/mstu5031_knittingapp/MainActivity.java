@@ -14,12 +14,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewMatchMade(View view) {
-        Intent intent = new Intent(this, MatchActivity.class);
+        Intent intent = new Intent(this, CreateActivity.class);
         startActivity(intent);
     }
 
     public void viewPairInfo (View view) {
         Intent intent = new Intent(this, ViewPairActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewCreate(View view) {
+        Intent intent = new Intent(this, CreateActivity.class);
+        startActivity(intent);
+    }
+
+    public void fakeLogin(View view) {
+        Intent intent = new Intent(this, CreateActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewLibrary(View view) {
+        Intent intent = new Intent(this, LibraryViewActivity.class);
         startActivity(intent);
     }
 }

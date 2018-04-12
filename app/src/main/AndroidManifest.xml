@@ -21,7 +21,10 @@
         <activity android:name=".LibraryActivity" />
         <activity android:name=".LibraryViewActivity" />
         <activity android:name=".MatchActivity" />
-        <activity android:name=".ViewPairActivity"></activity>
+        <activity android:name=".ViewPairActivity" />
+        <activity android:name=".StitchesRecyclerViewActivity" />
+        <activity android:name=".FakeStitchLibraryActivity" />
+        <activity android:name=".FakeItemLibraryActivity"></activity>
     </application>
 
 </manifest>

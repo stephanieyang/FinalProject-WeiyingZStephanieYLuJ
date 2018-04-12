@@ -4,4 +4,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="create_text">Pair created</string>
+    <string name="save_text">Pair saved</string>
+    <string name="delete_text">Pair deleted</string>
 </resources>
