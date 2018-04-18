@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "89253236512",
+    "firebase_url": "https://mstu5031knittingapp.firebaseio.com",
+    "project_id": "mstu5031knittingapp",
+    "storage_bucket": "mstu5031knittingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89253236512:android:3335fc7cd0b366d4",
+        "android_client_info": {
+          "package_name": "com.example.android.mstu5031_knittingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89253236512-ih3npqphk0ilrjim902moc4de1afrlos.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.mstu5031_knittingapp",
+            "certificate_hash": "2872d4a1f4adec8f7d2f821f3d2d26f7cc868478"
+          }
+        },
+        {
+          "client_id": "89253236512-cfmq26d37dkrhihoek1r4n4j7lp8app6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpNBnuT_K_s2vltJEQz3ujr3NQMBtsHlw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89253236512-cfmq26d37dkrhihoek1r4n4j7lp8app6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
