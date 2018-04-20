@@ -3,6 +3,7 @@ package com.example.android.mstu5031_knittingapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class CreateActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class CreateActivity extends AppCompatActivity {
     public void chooseStitch(View view) {
         // in the full version, pull up a recycler view activity with stitch cards to choose
         // here, we have a single dummy item that just transitions to the next page
-
+        Log.v("V","chooseStitch");
         Intent intent = new Intent(this, FakeStitchLibraryActivity.class);
         intent.putExtra(Keys.OTHER_PICKED,false);
         startActivity(intent);

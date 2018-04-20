@@ -24,7 +24,8 @@
         <activity android:name=".ViewPairActivity" />
         <activity android:name=".StitchesRecyclerViewActivity" />
         <activity android:name=".FakeStitchLibraryActivity" />
-        <activity android:name=".FakeItemLibraryActivity"></activity>
+        <activity android:name=".FakeItemLibraryActivity" />
+        <activity android:name=".TutorialListActivity"></activity>
     </application>
 
 </manifest>

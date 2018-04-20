@@ -1,28 +1,42 @@
 package com.example.android.mstu5031_knittingapp;
 
 public class Stitches {
-    private String stitchesname;
-    private int stitchesphoto;
+    private String name;
+    private String image_name;
+    private String directions;
 
-    public Stitches(String stitchesname, int stitchesphoto){
-        this.stitchesname = stitchesname;
-        this.stitchesphoto = stitchesphoto;
+    public Stitches() {
+        this.name = "foo";
+        this.image_name = "foo_img";
+        this.directions = "foo_dir";
+    }
+
+    public Stitches(String name, String image_name, String directions){
+        this.name = name;
+        this.image_name = image_name;
+        this.directions = directions;
     }
 
     public String getName() {
-        return stitchesname;
+        return name;
     }
 
     public void setName(String name) {
-        this.stitchesname = stitchesname;
+        this.name = name;
     }
 
-    public int getImageId() {
-        return stitchesphoto;
+    public String getImageName() {
+        return image_name;
     }
 
-    public void setImageId(int imageId) {
-        this.stitchesphoto = stitchesphoto;
+    public void setImageId(String image_name) {
+        this.image_name = image_name;
     }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) { this.directions = directions; }
 }
 

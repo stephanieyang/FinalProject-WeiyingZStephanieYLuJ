@@ -10,4 +10,8 @@ public interface Keys {
     public String PAIR_SAVED = "PAIR_SAVED";
     public String PAIR_CREATED = "PAIR_CREATED";
     public String PAIR_DELETED = "PAIR_DELETED";
+    public String PAIR_ID = "PAIR_ID";
+    public String STITCH_NAME = "STITCH_NAME";
+    public String ITEM_NAME = "ITEM_NAME";
+    public String USER_ID = "USER_ID";
 }

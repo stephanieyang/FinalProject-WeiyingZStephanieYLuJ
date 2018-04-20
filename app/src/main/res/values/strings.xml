@@ -1,10 +1,25 @@
 <resources>
-    <string name="app_name">MSTU5031_KnittingApp</string>
+    <string name="app_name">Knit Picker</string>
     <string name="title_activity_lib">LibActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="create_text">Pair created</string>
-    <string name="save_text">Pair saved</string>
-    <string name="delete_text">Pair deleted</string>
+    <string name="save_text">Save</string>
+    <string name="edit_text">Edit</string>
+    <string name="delete_text">Delete</string>
+    <string name="create_notice_text">Pair created</string>
+    <string name="save_notice_text">Pair saved</string>
+    <string name="delete_notice_text">Pair deleted</string>
+    <string name="login_text">Log In</string>
+    <string name="stitch_label">Stitch</string>
+    <string name="item_label">Item</string>
+    <string name="name_label">Name</string>
+    <string name="note_label"> note</string>
+    <string name="form_name_label">Name: </string>
+    <string name="form_name_hint">Enter name here</string>
+    <string name="form_notes_label">Description/Notes:</string>
+    <string name="form_notes_hint">Enter description here</string>
+    <string name="done_hint">Done</string>
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Password</string>
 </resources>

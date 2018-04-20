@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Stitch"></TextView>
+                android:text="@string/stitch_label"></TextView>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Item"></TextView>
+                android:text="@string/item_label"></TextView>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,30 +57,30 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name:"
+            android:text="@string/form_name_label"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="Enter description here"
+            android:hint="@string/form_name_hint"
             android:inputType="textLongMessage"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description/Notes:"
+            android:text="@string/form_notes_label"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="Enter description here"
+            android:hint="@string/form_name_hint"
             android:inputType="textLongMessage"
             />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="true"
-            android:text="Done" />
+            android:text="@string/done_hint" />
     </LinearLayout>
 
 
@@ -88,7 +88,7 @@
         android:id="@+id/btn_save_match"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save" />
+        android:text="@string/save_text" />
 
 
 </LinearLayout>
