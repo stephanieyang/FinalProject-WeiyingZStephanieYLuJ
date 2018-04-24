@@ -26,7 +26,7 @@ public class FakeStitchLibraryActivity extends AppCompatActivity {
         Intent intent = getIntent();
         otherPicked = intent.getBooleanExtra(Keys.OTHER_PICKED,false);
 
-        final ArrayList<Stitches> stitchList = new ArrayList<Stitches>();
+        final ArrayList<Stitch> stitchList = new ArrayList<Stitch>();
 
         DatabaseReference stitchLibRef = database.getReference("stitches");
         Log.v("V","starting read");
@@ -37,7 +37,7 @@ public class FakeStitchLibraryActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for (DataSnapshot singleSnapshot: dataSnapshot.getChildren()) {
-                    Stitches currentStitch = singleSnapshot.getValue(Stitches.class);
+                    Stitch currentStitch = singleSnapshot.getValue(Stitch.class);
                     stitchList.add(currentStitch);
 
                 }
@@ -64,4 +64,9 @@ public class FakeStitchLibraryActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+
+
+
 }
+

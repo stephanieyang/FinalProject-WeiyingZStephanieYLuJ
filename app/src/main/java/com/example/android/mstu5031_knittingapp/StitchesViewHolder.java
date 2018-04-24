@@ -12,17 +12,24 @@ import android.widget.TextView;
  */
 
 
-public class StitchesViewHolder extends RecyclerView.ViewHolder{
+import android.content.Context;
+        import android.support.v7.widget.CardView;
+        import android.support.v7.widget.RecyclerView;
+        import android.view.View;
+        import android.widget.ImageView;
+        import android.widget.TextView;
+
+
+/*public class StitchesViewHolder extends RecyclerView.ViewHolder{
     public CardView cardView;
-    public TextView stitchesname;
-    public ImageView stitchesPhoto;
+    public TextView stitchesName;
+    public ImageView stitchesImage;
 
     public StitchesViewHolder (View itemView, final Context context){
         super (itemView);
         cardView = (CardView)itemView.findViewById(R.id.card_view);
-        stitchesname = (TextView)itemView.findViewById(R.id.text);
-
+        stitchesName = (TextView)itemView.findViewById(R.id.text);
+        stitchesImage = (ImageView)itemView.findViewById(R.id.image);
     }
-
 }
-
+*/

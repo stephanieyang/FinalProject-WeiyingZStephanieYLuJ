@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class LibraryActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -44,8 +45,8 @@ public class LibraryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_library_view);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+      //  BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+      //  navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         initialData();
 

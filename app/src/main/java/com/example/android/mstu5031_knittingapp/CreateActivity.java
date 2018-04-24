@@ -1,10 +1,12 @@
 package com.example.android.mstu5031_knittingapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 public class CreateActivity extends AppCompatActivity {
 
@@ -22,12 +24,26 @@ public class CreateActivity extends AppCompatActivity {
         intent.putExtra(Keys.OTHER_PICKED,false);
         startActivity(intent);
     }
-    public void chooseItem(View view) {
-        // in the full version, pull up a recycler view activity with stitch cards to choose
-        // here, we have a single dummy item that just transitions to the next page
+//    public void chooseItem(View view) {
+////         in the full version, pull up a recycler view activity with stitch cards to choose
+////         here, we have a single dummy item that just transitions to the next page
+//
+//        Intent intent = new Intent(this, FakeItemLibraryActivity.class);
+//        intent.putExtra(Keys.OTHER_PICKED,false);
+//        startActivity(intent);
+//    }
+    public void pickItem(View view){
+        Intent pickItem=new Intent(this,ItemActivity.class);
+       // pickItem.putExtra("title", ((EditText) findViewById(R.id.title)).getText().toString());
 
-        Intent intent = new Intent(this, FakeItemLibraryActivity.class);
-        intent.putExtra(Keys.OTHER_PICKED,false);
-        startActivity(intent);
+        startActivity(pickItem);
     }
+    public void pickStitch(View view){
+        Intent pickStitch=new Intent(this,StitchActivity.class);
+        // pickItem.putExtra("title", ((EditText) findViewById(R.id.title)).getText().toString());
+
+        startActivity(pickStitch);
+    }
+
 }
+

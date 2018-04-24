@@ -18,14 +18,15 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
     private List<KnitLibrary> lib;
     private Context context;
 
-    public LibraryAdapter(List<KnitLibrary> pattern, Context context){
-        this.lib=pattern;
-        this.context=context;
+    public LibraryAdapter(List<KnitLibrary> pattern, Context context) {
+        this.lib = pattern;
+        this.context = context;
 
     }
+
     @Override
     public LibraryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_library,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_library, parent, false);
         return new LibraryViewHolder(view, context);
     }
 
@@ -35,8 +36,8 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
     }
 
 
-    public void onBindViewHolder(LibraryViewHolder holder, int position,int position2) {
-        KnitLibrary currentLib= lib.get(position);
+    public void onBindViewHolder(LibraryViewHolder holder, int position, int position2) {
+        KnitLibrary currentLib = lib.get(position);
         holder.patternName.setText(currentLib.name);
         holder.patternPhoto.setImageResource(currentLib.photoId);
         holder.patternPhoto.setImageResource(currentLib.photo2Id);
@@ -44,8 +45,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return lib.size();
     }
-
 }

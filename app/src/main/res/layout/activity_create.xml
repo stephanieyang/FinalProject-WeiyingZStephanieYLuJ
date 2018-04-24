@@ -39,8 +39,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
-                android:onClick="chooseStitch"
-                android:src="@drawable/vine_lace" />
+                android:src="@drawable/vine_lace"
+                android:onClick="chooseStitch"/>
 
         </LinearLayout>
 
@@ -68,8 +68,8 @@
                 android:id="@+id/itemImage"
                 android:layout_width="match_parent"
                 android:layout_height="208dp"
-                android:onClick="chooseItem"
-                android:src="@drawable/hat1" />
+                android:src="@drawable/hat1"
+                android:onClick="chooseItem"/>
 
 
         </LinearLayout>

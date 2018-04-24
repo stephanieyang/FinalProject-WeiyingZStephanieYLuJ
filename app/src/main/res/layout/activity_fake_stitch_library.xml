@@ -6,19 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.mstu5031_knittingapp.FakeStitchLibraryActivity">
 
-    <ImageView
-        android:id="@+id/image2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginRight="16dp"
-        android:src="@drawable/vine_lace"
-        android:onClick="stitchPicked"
-        />
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/stitches_recyler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose Me"
+        android:onClick="stitchPicked"
         />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

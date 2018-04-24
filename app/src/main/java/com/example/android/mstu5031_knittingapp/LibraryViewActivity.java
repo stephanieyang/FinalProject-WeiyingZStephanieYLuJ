@@ -22,7 +22,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -61,8 +60,8 @@ public class LibraryViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_library_view);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+     //   BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+     //   navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         initialData();
 
@@ -143,7 +142,7 @@ public class LibraryViewActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        
+
         ArrayList<UserCreatedPair> doneList = new ArrayList<UserCreatedPair>();
         ArrayList<UserCreatedPair> undoneList = new ArrayList<UserCreatedPair>();
 
