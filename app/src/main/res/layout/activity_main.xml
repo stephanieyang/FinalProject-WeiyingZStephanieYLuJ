@@ -32,5 +32,11 @@
         android:text="Create View"
         android:onClick="viewCreate"
         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:onClick="logOut"
+        />
 
 </LinearLayout>

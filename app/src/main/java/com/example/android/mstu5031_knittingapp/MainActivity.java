@@ -62,13 +62,14 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }
             }
-        };
+        };}
 
-
-
-
-
+    public void logOut(View view){
+    msAuth.signOut();
     }
+
+
+
 
 
     public void viewMatchMade(View view) {
