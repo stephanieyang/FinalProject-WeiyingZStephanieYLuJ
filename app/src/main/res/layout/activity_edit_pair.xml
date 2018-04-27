@@ -56,16 +56,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/pair_name_entry"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="Description/Notes"
+            android:hint="@string/form_name_hint"
+            android:inputType="text"
+            />
+        <EditText
+            android:id="@+id/pair_notes_entry"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="@string/form_notes_hint"
             android:inputType="textLongMessage"
             />
         <CheckBox
+            android:id="@+id/pair_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="true"
-            android:text="Done" />
+            android:text="@string/done_hint" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

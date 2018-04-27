@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -102,7 +104,9 @@ public class LibraryViewActivity extends AppCompatActivity {
 
 
         // TODO: REMOVE PLACEHOLDER AND ADD REAL VARIABLE CODE
-        DatabaseReference pairRef = database.getReference("users/fake_user_key/matches");
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userId = auth.getCurrentUser().getUid();
+        DatabaseReference pairRef = database.getReference("users/" + userId + "/matches");
 
         final ArrayList<UserCreatedPair> allPairsList = new ArrayList<UserCreatedPair>();
 
@@ -165,7 +169,10 @@ public class LibraryViewActivity extends AppCompatActivity {
 
     public void viewPairInfo (View view) {
         Intent intent = new Intent(this, ViewPairActivity.class);
-        intent.putExtra(Keys.USER_ID, "fake_user_key"); // TODO: GENERATE THIS FOR REAL
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userId = auth.getCurrentUser().getUid();
+        intent.putExtra(Keys.USER_ID, userId);
         intent.putExtra(Keys.PAIR_ID, "fake_match_key_1"); // TODO: GENERATE THIS FOR REAL
         startActivity(intent);
     }

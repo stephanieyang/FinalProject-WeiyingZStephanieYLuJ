@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FinalProject-WeiyingZStephanieYLuJ.iml" filepath="$PROJECT_DIR$/FinalProject-WeiyingZStephanieYLuJ.iml" />
+      <module fileurl="file://C:\Users\Stephanie\AndroidStudioProjects\MSTU5031_KnittingApp\FinalProject-WeiyingZStephanieYLuJ.iml" filepath="C:\Users\Stephanie\AndroidStudioProjects\MSTU5031_KnittingApp\FinalProject-WeiyingZStephanieYLuJ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MSTU5031_KnittingApp.iml" filepath="$PROJECT_DIR$/MSTU5031_KnittingApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

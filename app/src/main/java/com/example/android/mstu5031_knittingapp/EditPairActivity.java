@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -14,10 +17,12 @@ import java.util.UUID;
 public class EditPairActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    String userId;
+    //String userId;
     String pairId;
     String stitchImgName;
     String itemImgName;
+    boolean pairExists = (pairId != "");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +30,14 @@ public class EditPairActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_pair);
 
         Intent intent = getIntent();
-        userId = intent.getStringExtra(Keys.USER_ID);
+        //userId = intent.getStringExtra(Keys.USER_ID);
         pairId = intent.getStringExtra(Keys.PAIR_ID);
 
-        if(pairId == "") {
+        if(!pairExists) {
             stitchImgName = intent.getStringExtra(Keys.STITCH_NAME);
             itemImgName = intent.getStringExtra(Keys.ITEM_NAME);
+        } else {
+            // TODO: read info from database
         }
 
         // TODO: display stitch & item images on page based on what was passed via intent
@@ -79,13 +86,22 @@ public class EditPairActivity extends AppCompatActivity {
     }
 
     public void savePairInfo(View view) {
-        // TODO: get user ID information
-        String testUserId = "user123";
-        // TODO: create a real new pair based on user input
-        String newPairId = UUID.randomUUID().toString();
-        UserCreatedPair dummyPair = new UserCreatedPair(false, newPairId, "foo_item","foo_stitch","foo_name","foo_notes","");
-        DatabaseReference newPairRef = database.getReference("users/" + testUserId + "/matches/" + newPairId);
-        newPairRef.setValue(dummyPair);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userId = auth.getCurrentUser().getUid();
+        if(pairExists) {
+            String pairName = ((EditText) findViewById(R.id.pair_name_entry)).getText().toString();
+            String pairNotes = ((EditText) findViewById(R.id.pair_notes_entry)).getText().toString();
+            boolean isDone = ((CheckBox) findViewById(R.id.pair_done)).isChecked();
+            // TODO: add code to edit already existing pair
+        } else {
+            String newPairId = UUID.randomUUID().toString();
+            String newPairName = ((EditText) findViewById(R.id.pair_name_entry)).getText().toString();
+            String newPairNotes = ((EditText) findViewById(R.id.pair_notes_entry)).getText().toString();
+            boolean isDone = ((CheckBox) findViewById(R.id.pair_done)).isChecked();
+            UserCreatedPair dummyPair = new UserCreatedPair(isDone, newPairId, itemImgName, stitchImgName, newPairName, newPairNotes,"");
+            DatabaseReference newPairRef = database.getReference("users/" + userId + "/matches/" + newPairId);
+            newPairRef.setValue(dummyPair);
+        }
 
         //Intent intent = new Intent(this, ViewPairActivity.class);
         Intent intent = new Intent(this, LibraryViewActivity.class);
@@ -94,7 +110,9 @@ public class EditPairActivity extends AppCompatActivity {
     }
 
     public void deletePairInfo(View view) {
-        if(pairId != "") {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userId = auth.getCurrentUser().getUid();
+        if(pairExists) {
             DatabaseReference pairRef = database.getReference("users/" + userId + "/matches/" + pairId);
             pairRef.setValue("");
         }

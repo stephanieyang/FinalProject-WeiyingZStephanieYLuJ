@@ -14,4 +14,5 @@ public interface Keys {
     public String STITCH_NAME = "STITCH_NAME";
     public String ITEM_NAME = "ITEM_NAME";
     public String USER_ID = "USER_ID";
+    public String PAIR_EXISTS = "PAIR_EXISTS";
 }
