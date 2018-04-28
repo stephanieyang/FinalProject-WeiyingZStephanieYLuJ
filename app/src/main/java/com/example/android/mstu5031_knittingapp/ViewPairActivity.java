@@ -27,53 +27,66 @@ public class ViewPairActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pair);
+        Log.v("TESTING","here in ViewPairActivity onCreate");
 
 
         Intent intent = getIntent();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         userId = auth.getCurrentUser().getUid();
         pairId = intent.getStringExtra(Keys.PAIR_ID);
+        Log.v("TESTING","Pair ID = " + pairId);
+
+
+        Log.v("TESTING","trying to get database ref");
 
         DatabaseReference pairRef = database.getReference("users/" + userId + "/matches/" + pairId);
 
-        if(pairId == "TEST_ID") {
+
+        Log.v("TESTING","got database ref");
+
+        if(pairId.equals("TEST_ID")) {
             currentPair = new UserCreatedPair(false,"0001","hat","twist_zigzag","cool hat","for me","");
-            Log.d("V", "Name of pair is: " +  currentPair.getName());
+            Log.v("TESTING", "Name of pair is: " +  currentPair.getName());
+        } else {
+
+
+            Log.v("TESTING", "starting read");
+            // Read from the database
+            pairRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    currentPair = dataSnapshot.getValue(UserCreatedPair.class);
+                    Log.d("V", "Name of pair is: " + currentPair.getName());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w("V", "Failed to read value.", error.toException());
+                }
+            });
+
         }
-
-
-
-        Log.v("V","starting read");
-        // Read from the database
-        pairRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                currentPair = dataSnapshot.getValue(UserCreatedPair.class);
-                Log.d("V", "Name of pair is: " +  currentPair.getName());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("V", "Failed to read value.", error.toException());
-            }
-        });
 
         // TODO: display information from the viewedPair object
         setDisplayInfo();
     }
 
     void setDisplayInfo() {
+        Log.v("TESTING","start of setDisplayInfo");
         TextView nameView = (TextView) findViewById(R.id.pair_name_text);
         nameView.setText(currentPair.getName());
         TextView notesView = (TextView) findViewById(R.id.pair_notes_text);
         notesView.setText(currentPair.getNotes());
+        Log.v("TESTING","setting images in setDisplayInfo");
         ImageView stitchImgView = (ImageView) findViewById(R.id.pickedPattern);
-        stitchImgView.setImageDrawable(Resources.getSystem().getDrawable(Resources.getSystem().getIdentifier("drawable/" + currentPair.getStitch(),null, this.getPackageName())));
+        stitchImgView.setImageResource(Stitch.getDrawableId(currentPair.getStitch()));
+        Log.v("TESTING","successfully set stitch image");
         ImageView itemImgView = (ImageView) findViewById(R.id.ItemPicked);
-        stitchImgView.setImageDrawable(Resources.getSystem().getDrawable(Resources.getSystem().getIdentifier("drawable/" + currentPair.getItem(),null, this.getPackageName())));
+        itemImgView.setImageResource(Item.getDrawableId(currentPair.getItem()));
+        Log.v("TESTING","end of setDisplayInfo");
     }
 
     public void editPairInfo(View view) {

@@ -41,5 +41,28 @@ public class Item {
             this.image_name = image_name;
         }
 
+
+
+    public static int getDrawableId(String name) {
+        switch(name) {
+            case "hat":
+                return R.drawable.hat;
+            case "hat1":
+                return R.drawable.hat1;
+            case "hat2":
+                return R.drawable.hat2;
+            case "scarf":
+                return R.drawable.scarf;
+            case "gloves":
+                return R.drawable.gloves;
+            case "socks":
+                return R.drawable.socks;
+            case "sweater":
+                return R.drawable.sweater;
+            default:
+                return 0; // shouldn't happen
+        }
+    }
+
     }
 

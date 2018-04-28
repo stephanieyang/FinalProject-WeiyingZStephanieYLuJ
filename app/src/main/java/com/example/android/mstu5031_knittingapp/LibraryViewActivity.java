@@ -195,7 +195,8 @@ public class LibraryViewActivity extends AppCompatActivity {
 //        FirebaseAuth auth = FirebaseAuth.getInstance();
 //        String userId = auth.getCurrentUser().getUid();
 //        intent.putExtra(Keys.USER_ID, userId);
-        intent.putExtra(Keys.PAIR_ID, "fake_match_key_1"); // TODO: GENERATE THIS FOR REAL
+        intent.putExtra(Keys.PAIR_ID, "TEST_ID"); // TODO: GENERATE THIS FOR REAL
+        Log.v("TESTING","LibraryViewActivity: Starting intent");
         startActivity(intent);
     }
 
