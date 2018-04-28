@@ -23,13 +23,14 @@ import java.util.List;
 
 public class StitchActivity extends AppCompatActivity {
 
-    private List<Stitch> stitches;
+    private List<Stitch> stitches = new ArrayList<>();
     private StitchAdapter stitchesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stitch);
+        Log.v("TESTING","here in onCreate");
 
         initialData();
 
@@ -40,15 +41,14 @@ public class StitchActivity extends AppCompatActivity {
         recylerView.setAdapter(new StitchAdapter(stitches, this));
         recylerView.setAdapter(stitchesAdapter);
 
-
     }
 
 
     private void initialData() {
-        stitches = new ArrayList<>();
-        stitches.add(new Stitch("Daisy", "","",R.drawable.daisy));
-        stitches.add(new Stitch("Chevron", "","",R.drawable.chevron));
-        stitches.add(new Stitch("Horseshoe","","", R.drawable.horseshoe));
+        Log.v("TESTING","here in initialData");
+        stitches.add(new Stitch("Daisy", "daisy","",R.drawable.daisy));
+        stitches.add(new Stitch("Chevron", "chevron","",R.drawable.chevron));
+        stitches.add(new Stitch("Horseshoe","horseshoe","", R.drawable.horseshoe));
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

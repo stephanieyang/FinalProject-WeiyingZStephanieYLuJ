@@ -1,5 +1,6 @@
 package com.example.android.mstu5031_knittingapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,10 +30,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.security.AccessController.getContext;
+
 public class LibraryViewActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private List<KnitLibrary> patterns;
+    private List<UserCreatedPair> patterns;
     private LibraryAdapter LibraryAdapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -70,11 +73,20 @@ public class LibraryViewActivity extends AppCompatActivity {
         RecyclerView recylerView = (RecyclerView) findViewById(R.id.recycler_view);
         recylerView.setHasFixedSize(true);
         recylerView.setLayoutManager(new LinearLayoutManager(this));
+        final Context context = this;
 
-        LibraryAdapter=new LibraryAdapter(patterns, this);
-        recylerView.setAdapter(new LibraryAdapter(patterns, this));
-        recylerView.setAdapter(LibraryAdapter);
-
+        //LibraryAdapter=new LibraryAdapter(patterns, this);
+        recylerView.setAdapter(new LibraryAdapter(patterns, this, new LibraryItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Log.v("TESTING", "clicked position:" + position);
+                Intent intent = new Intent(context, ViewPairActivity.class);
+                intent.putExtra(Keys.PAIR_ID, "TEST_ID");
+                startActivity(intent);
+                // do what ever you want to do with it
+            }
+        }));
+        //recylerView.setAdapter(LibraryAdapter);
 
 
         Intent intent = getIntent();
@@ -96,21 +108,29 @@ public class LibraryViewActivity extends AppCompatActivity {
     }
 
 
+
+    public interface OnItemClickListener {
+        public void onClick(View view, int position);
+    }
+
+
     private void initialData() {
         patterns = new ArrayList<>();
-        patterns.add(new KnitLibrary("hat", R.drawable.hat1,R.drawable.twist_zigzag));
-        patterns.add(new KnitLibrary("scarf", R.drawable.scarf,R.drawable.vine_lace));
+        patterns.add(new UserCreatedPair(false,"0001","hat","twist_zigzag","cool hat","for me",""));
+        patterns.add(new UserCreatedPair(false,"0002","scarf","vine_lace","yellow scarf","for me",""));
+        Log.v("TESTING","end of filler initalize");
 
 
 
         // TODO: REMOVE PLACEHOLDER AND ADD REAL VARIABLE CODE
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String userId = auth.getCurrentUser().getUid();
+        Log.v("TESTING","got user id");
         DatabaseReference pairRef = database.getReference("users/" + userId + "/matches");
 
         final ArrayList<UserCreatedPair> allPairsList = new ArrayList<UserCreatedPair>();
 
-        Log.v("V","starting read");
+        Log.v("TESTING","starting read");
         // Read from the database
         pairRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,7 +143,9 @@ public class LibraryViewActivity extends AppCompatActivity {
 
                 }
                 Log.d("V", "Size of list is: " + allPairsList.size());
-                Log.d("V", allPairsList.get(0).getName() + " " + allPairsList.get(1).getName());
+                if(allPairsList.size() > 1) {
+                    Log.d("V", allPairsList.get(0).getName() + " " + allPairsList.get(1).getName());
+                }
             }
 
             @Override
@@ -170,9 +192,9 @@ public class LibraryViewActivity extends AppCompatActivity {
     public void viewPairInfo (View view) {
         Intent intent = new Intent(this, ViewPairActivity.class);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String userId = auth.getCurrentUser().getUid();
-        intent.putExtra(Keys.USER_ID, userId);
+//        FirebaseAuth auth = FirebaseAuth.getInstance();
+//        String userId = auth.getCurrentUser().getUid();
+//        intent.putExtra(Keys.USER_ID, userId);
         intent.putExtra(Keys.PAIR_ID, "fake_match_key_1"); // TODO: GENERATE THIS FOR REAL
         startActivity(intent);
     }

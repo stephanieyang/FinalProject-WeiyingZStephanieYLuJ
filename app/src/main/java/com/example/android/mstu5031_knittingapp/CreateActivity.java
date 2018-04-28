@@ -14,6 +14,7 @@ public class CreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+        Log.v("TESTING","here in CreateActivity onCreate");
     }
 
     public void chooseStitch(View view) {
@@ -34,13 +35,16 @@ public class CreateActivity extends AppCompatActivity {
 //    }
     public void pickItem(View view){
         Intent pickItem=new Intent(this,ItemActivity.class);
+        pickItem.putExtra(Keys.OTHER_PICKED,false);
        // pickItem.putExtra("title", ((EditText) findViewById(R.id.title)).getText().toString());
 
         startActivity(pickItem);
     }
     public void pickStitch(View view){
         Intent pickStitch=new Intent(this,StitchActivity.class);
+        pickStitch.putExtra(Keys.OTHER_PICKED,false);
         // pickItem.putExtra("title", ((EditText) findViewById(R.id.title)).getText().toString());
+        Log.v("TESTING","here in pickStitch");
 
         startActivity(pickStitch);
     }

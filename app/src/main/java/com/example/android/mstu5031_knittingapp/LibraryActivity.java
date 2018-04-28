@@ -7,9 +7,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
 public class LibraryActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private List<KnitLibrary> patterns;
+    private List<UserCreatedPair> patterns;
     private LibraryAdapter libraryAdapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -56,8 +58,20 @@ public class LibraryActivity extends AppCompatActivity {
         recylerView.setHasFixedSize(true);
         recylerView.setLayoutManager(new LinearLayoutManager(this));
 
-        libraryAdapter=new LibraryAdapter(patterns, this);
-        recylerView.setAdapter(new LibraryAdapter(patterns, this));
+        libraryAdapter=new LibraryAdapter(patterns, this, new LibraryItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Log.d("TESTING", "clicked position:" + position);
+                // do what ever you want to do with it
+            }
+        });
+        recylerView.setAdapter(new LibraryAdapter(patterns, this, new LibraryItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Log.d("TESTING", "clicked position:" + position);
+                // do what ever you want to do with it
+            }
+        }));
         recylerView.setAdapter(libraryAdapter);
 
 
@@ -66,8 +80,8 @@ public class LibraryActivity extends AppCompatActivity {
 
     private void initialData() {
         patterns = new ArrayList<>();
-        patterns.add(new KnitLibrary("hat", R.drawable.hat1,R.drawable.twist_zigzag));
-        patterns.add(new KnitLibrary("scarf", R.drawable.scarf,R.drawable.vine_lace));
+        patterns.add(new UserCreatedPair(false,"0001","hat","twist_zigzag","cool hat","for me",""));
+        patterns.add(new UserCreatedPair(false,"0002","scarf","vine_lace","yellow scarf","for me",""));
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

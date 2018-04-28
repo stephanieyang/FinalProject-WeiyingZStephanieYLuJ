@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
                 android:src="@drawable/vine_lace"
-                android:onClick="chooseStitch"/>
+                android:onClick="pickStitch"/>
 
         </LinearLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="208dp"
                 android:src="@drawable/hat1"
-                android:onClick="chooseItem"/>
+                android:onClick="pickItem"/>
 
 
         </LinearLayout>

@@ -1,11 +1,15 @@
 package com.example.android.mstu5031_knittingapp;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,6 +21,7 @@ public class ViewPairActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     String pairId;
     String userId;
+    UserCreatedPair currentPair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +30,16 @@ public class ViewPairActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String userId = intent.getStringExtra(Keys.USER_ID);
-        String pairId = intent.getStringExtra(Keys.PAIR_ID);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        userId = auth.getCurrentUser().getUid();
+        pairId = intent.getStringExtra(Keys.PAIR_ID);
 
         DatabaseReference pairRef = database.getReference("users/" + userId + "/matches/" + pairId);
+
+        if(pairId == "TEST_ID") {
+            currentPair = new UserCreatedPair(false,"0001","hat","twist_zigzag","cool hat","for me","");
+            Log.d("V", "Name of pair is: " +  currentPair.getName());
+        }
 
 
 
@@ -39,8 +50,8 @@ public class ViewPairActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                UserCreatedPair viewedPair = dataSnapshot.getValue(UserCreatedPair.class);
-                Log.d("V", "Name of pair is: " + viewedPair.getName());
+                currentPair = dataSnapshot.getValue(UserCreatedPair.class);
+                Log.d("V", "Name of pair is: " +  currentPair.getName());
             }
 
             @Override
@@ -51,6 +62,18 @@ public class ViewPairActivity extends AppCompatActivity {
         });
 
         // TODO: display information from the viewedPair object
+        setDisplayInfo();
+    }
+
+    void setDisplayInfo() {
+        TextView nameView = (TextView) findViewById(R.id.pair_name_text);
+        nameView.setText(currentPair.getName());
+        TextView notesView = (TextView) findViewById(R.id.pair_notes_text);
+        notesView.setText(currentPair.getNotes());
+        ImageView stitchImgView = (ImageView) findViewById(R.id.pickedPattern);
+        stitchImgView.setImageDrawable(Resources.getSystem().getDrawable(Resources.getSystem().getIdentifier("drawable/" + currentPair.getStitch(),null, this.getPackageName())));
+        ImageView itemImgView = (ImageView) findViewById(R.id.ItemPicked);
+        stitchImgView.setImageDrawable(Resources.getSystem().getDrawable(Resources.getSystem().getIdentifier("drawable/" + currentPair.getItem(),null, this.getPackageName())));
     }
 
     public void editPairInfo(View view) {
@@ -61,7 +84,7 @@ public class ViewPairActivity extends AppCompatActivity {
     }
 
     public void deletePairInfo(View view) {
-        if(userId == "" || pairId == "") return; // for testing
+        if(userId == "" || pairId == "" || pairId == "TEST_ID") return; // for testing
         DatabaseReference pairRef = database.getReference("users/" + userId + "/matches/" + pairId);
         pairRef.removeValue();
         // if the pair ID is empty, then this pair hasn't actually been created so we can't really delete

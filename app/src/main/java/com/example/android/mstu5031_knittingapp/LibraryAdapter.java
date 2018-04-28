@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.content.res.Resources;
 
 import java.util.List;
 
@@ -15,10 +16,11 @@ import java.util.List;
 
 public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
 
-    private List<KnitLibrary> lib;
+    private List<UserCreatedPair> lib;
     private Context context;
+    LibraryItemClickListener clickListener;
 
-    public LibraryAdapter(List<KnitLibrary> pattern, Context context) {
+    public LibraryAdapter(List<UserCreatedPair> pattern, Context context, LibraryItemClickListener listener) {
         this.lib = pattern;
         this.context = context;
 
@@ -27,20 +29,33 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
     @Override
     public LibraryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_library, parent, false);
+        final LibraryViewHolder viewHolder = new LibraryViewHolder(view, this.context);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onItemClick(v, viewHolder.getPosition());
+            }
+        });
         return new LibraryViewHolder(view, context);
     }
 
     @Override
     public void onBindViewHolder(LibraryViewHolder holder, int position) {
+        UserCreatedPair currentLib = lib.get(position);
+
+        holder.patternName.setText(currentLib.getName());
+        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getItem(),null, context.getPackageName()));
+        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getStitch(),null, context.getPackageName()));
 
     }
 
 
     public void onBindViewHolder(LibraryViewHolder holder, int position, int position2) {
-        KnitLibrary currentLib = lib.get(position);
-        holder.patternName.setText(currentLib.name);
-        holder.patternPhoto.setImageResource(currentLib.photoId);
-        holder.patternPhoto.setImageResource(currentLib.photo2Id);
+        UserCreatedPair currentLib = lib.get(position);
+
+        holder.patternName.setText(currentLib.getName());
+        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getItem(),null, context.getPackageName()));
+        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getStitch(),null, context.getPackageName()));
 
     }
 
