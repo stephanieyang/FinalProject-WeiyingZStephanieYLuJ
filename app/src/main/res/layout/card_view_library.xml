@@ -51,6 +51,16 @@
                 android:layout_centerVertical="true"
                 android:text="@string/note_label"
                 android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/edit_in_lib"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Edit_in_lib"
+
+                />
+
+
         </LinearLayout>
 
     </RelativeLayout>
