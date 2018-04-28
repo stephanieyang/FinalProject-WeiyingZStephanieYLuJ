@@ -21,9 +21,9 @@ public class StitchViewHolder extends RecyclerView.ViewHolder{
 
     public StitchViewHolder(View itemView,final Context context) {
         super(itemView);
-        cardView=(CardView)itemView.findViewById(R.id.card_view);
-        stitchName=(TextView)itemView.findViewById(R.id.text);
-        stitchPhoto=(ImageView)itemView.findViewById(R.id.image);
+        cardView=(CardView)itemView.findViewById(R.id.card_view1);
+        stitchName=(TextView)itemView.findViewById(R.id.text1);
+        stitchPhoto=(ImageView)itemView.findViewById(R.id.image1);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override

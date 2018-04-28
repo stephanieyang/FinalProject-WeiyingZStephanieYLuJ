@@ -11,22 +11,26 @@ public class StitchAdapter extends RecyclerView.Adapter<StitchViewHolder> {
     private List<Stitch> stitches;
     private Context context;
 
-    public StitchAdapter(List<Stitch>stitches, Context context){
+
+    public StitchAdapter(List<Stitch> stitches, Context context){
         this.stitches=stitches;
         this.context=context;
 
     }
     @Override
     public StitchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.stitch_card_view,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.stitch_card_view, parent,false);
         return new StitchViewHolder(view, context);
     }
 
+
+
     @Override
     public void onBindViewHolder(StitchViewHolder holder, int position) {
-        Stitch stitch=stitches.get(position);
-        holder.stitchName.setText(stitch.name);
-        holder.stitchPhoto.setImageResource(stitch.imageId);
+//
+//        Stitch stitch=stitches.get(position);
+//        holder.stitchName.setText(stitch.name0);
+//        holder.stitchPhoto.setImageResource(stitch.imageId0);
 
     }
 

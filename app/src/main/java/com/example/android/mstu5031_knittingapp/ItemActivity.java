@@ -1,5 +1,6 @@
 package com.example.android.mstu5031_knittingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +25,7 @@ import java.util.List;
 public class ItemActivity extends AppCompatActivity {
 
     private List<Item> items;
-    private ItemAdapter stitchesAdapter;
+    private ItemAdapter itemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +34,19 @@ public class ItemActivity extends AppCompatActivity {
 
         initialData();
 
-        RecyclerView recylerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recylerView.setHasFixedSize(true);
-        recylerView.setLayoutManager(new LinearLayoutManager(this));
-        ItemAdapter itemsAdapter = new ItemAdapter(items, this);
-        recylerView.setAdapter(new ItemAdapter(items, this));
-        recylerView.setAdapter(itemsAdapter);
+        RecyclerView recylerView1 = (RecyclerView) findViewById(R.id.recycler_view1);
+        recylerView1.setHasFixedSize(true);
+        recylerView1.setLayoutManager(new LinearLayoutManager(this));
 
+        itemsAdapter = new ItemAdapter(items, this);
+        recylerView1.setAdapter(new ItemAdapter(items, this));
+        recylerView1.setAdapter(itemsAdapter);
+
+
+        String itemName= (String) ((TextView) findViewById(R.id.text)).getText();
+        Intent mrIntent = new Intent(this, EditPairActivity.class);
+        mrIntent.putExtra(Keys.ITEM_NAME, itemName);
+        startActivity(mrIntent);
 
     }
 
@@ -60,7 +68,7 @@ public class ItemActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.add:
                 items.add(getRandomItem());
-                stitchesAdapter.notifyDataSetChanged();
+                itemsAdapter.notifyDataSetChanged();
 
             default:
                 return super.onOptionsItemSelected(item);
