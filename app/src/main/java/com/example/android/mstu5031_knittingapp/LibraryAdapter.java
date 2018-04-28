@@ -30,12 +30,12 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
     public LibraryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_library, parent, false);
         final LibraryViewHolder viewHolder = new LibraryViewHolder(view, this.context);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickListener.onItemClick(v, viewHolder.getPosition());
-            }
-        });
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                clickListener.onItemClick(v, viewHolder.getPosition());
+//            }
+//        });
         return new LibraryViewHolder(view, context);
     }
 
@@ -44,8 +44,8 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
         UserCreatedPair currentLib = lib.get(position);
 
         holder.patternName.setText(currentLib.getName());
-        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getItem(),null, context.getPackageName()));
-        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getStitch(),null, context.getPackageName()));
+        holder.patternPhoto.setImageResource(Stitch.getDrawableId(currentLib.getStitch()));
+        holder.itemPhoto.setImageResource(Item.getDrawableId(currentLib.getItem()));
 
     }
 
@@ -54,9 +54,8 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
         UserCreatedPair currentLib = lib.get(position);
 
         holder.patternName.setText(currentLib.getName());
-        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getItem(),null, context.getPackageName()));
-        holder.patternPhoto.setImageResource(Resources.getSystem().getIdentifier("drawable/" + currentLib.getStitch(),null, context.getPackageName()));
-
+        holder.patternPhoto.setImageResource(Stitch.getDrawableId(currentLib.getStitch()));
+        holder.itemPhoto.setImageResource(Item.getDrawableId(currentLib.getItem()));
     }
 
     @Override

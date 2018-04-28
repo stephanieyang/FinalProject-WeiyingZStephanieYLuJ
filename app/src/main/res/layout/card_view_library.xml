@@ -19,7 +19,6 @@
             android:layout_alignParentLeft="true"
             android:layout_marginRight="16dp"
             android:src="@drawable/hat1"
-            android:onClick="chooseItem"
             />
 
         <ImageView
@@ -29,7 +28,6 @@
             android:layout_toRightOf="@id/image"
             android:layout_marginRight="16dp"
             android:src="@drawable/vine_lace"
-            android:onClick="chooseStitch"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,19 +42,11 @@
                 android:text="@string/name_label"
                 android:textSize="30dp" />
 
-            <TextView
-                android:id="@+id/note"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/note_label"
-                android:textSize="20dp" />
-
             <Button
                 android:id="@+id/edit_in_lib"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Edit_in_lib"
+                android:text="@string/view_in_lib"
                 android:onClick="viewPairInfo"
 
                 />

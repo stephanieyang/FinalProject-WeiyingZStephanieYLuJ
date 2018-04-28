@@ -80,9 +80,6 @@ public class LibraryViewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View v, int position) {
                 Log.v("TESTING", "clicked position:" + position);
-                Intent intent = new Intent(context, ViewPairActivity.class);
-                intent.putExtra(Keys.PAIR_ID, "TEST_ID");
-                startActivity(intent);
                 // do what ever you want to do with it
             }
         }));
@@ -120,9 +117,6 @@ public class LibraryViewActivity extends AppCompatActivity {
         patterns.add(new UserCreatedPair(false,"0002","scarf","vine_lace","yellow scarf","for me",""));
         Log.v("TESTING","end of filler initalize");
 
-
-
-        // TODO: REMOVE PLACEHOLDER AND ADD REAL VARIABLE CODE
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String userId = auth.getCurrentUser().getUid();
         Log.v("TESTING","got user id");

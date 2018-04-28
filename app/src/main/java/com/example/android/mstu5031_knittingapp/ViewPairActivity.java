@@ -1,13 +1,17 @@
 package com.example.android.mstu5031_knittingapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -33,8 +37,9 @@ public class ViewPairActivity extends AppCompatActivity {
         Intent intent = getIntent();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         userId = auth.getCurrentUser().getUid();
-        pairId = intent.getStringExtra(Keys.PAIR_ID);
+        pairId = intent.getStringExtra(Keys.PAIR_ID); // guaranteed to be something because you only get to this screen from the library
         Log.v("TESTING","Pair ID = " + pairId);
+        final Context context = this;
 
 
         Log.v("TESTING","trying to get database ref");
@@ -48,51 +53,88 @@ public class ViewPairActivity extends AppCompatActivity {
             currentPair = new UserCreatedPair(false,"0001","hat","twist_zigzag","cool hat","for me","");
             Log.v("TESTING", "Name of pair is: " +  currentPair.getName());
         } else {
+            // read info from database
+            //DatabaseReference pairRef = database.getReference("users/" + userId + "/matches/" + pairId);
+            final String loadFailureText = this.getResources().getString(R.string.load_failure_text);
+            //UserCreatedPair currentPair;
 
-
-            Log.v("TESTING", "starting read");
+            // read stitch info
             // Read from the database
             pairRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
-                    currentPair = dataSnapshot.getValue(UserCreatedPair.class);
-                    Log.d("V", "Name of pair is: " + currentPair.getName());
+                    final UserCreatedPair currentPair = dataSnapshot.getValue(UserCreatedPair.class);
+                    Log.d("V", "Read pair is: " + currentPair.getName());
+
+                    DatabaseReference stitchRef = database.getReference("stitches/" + currentPair.getStitch());
+                    final DatabaseReference itemRef = database.getReference("items/" + currentPair.getItem());
+
+                    stitchRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // This method is called once with the initial value and again
+                            // whenever data at this location is updated.
+                            final Stitch currentStitch = dataSnapshot.getValue(Stitch.class);
+                            Log.d("V", "Read stitch is: " + currentStitch.getName());
+                            itemRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    // This method is called once with the initial value and again
+                                    // whenever data at this location is updated.
+                                    Item currentItem = dataSnapshot.getValue(Item.class);
+                                    Log.d("V", "Read pair is: " + currentItem.getName());
+
+
+                                    // with all data loaded, modify the values onscreen
+                                    ((ImageView)findViewById(R.id.ItemPicked)).setImageResource(Item.getDrawableId(currentItem.getName()));
+                                    ((TextView)findViewById(R.id.pair_item_name)).setText("");
+                                    ((ImageView)findViewById(R.id.pickedPattern)).setImageResource(Item.getDrawableId(currentStitch.getName()));
+                                    ((TextView)findViewById(R.id.pair_stitch_name)).setText("");
+                                    ((TextView)findViewById(R.id.pair_name_text)).setText(currentPair.getName());
+                                    ((TextView)findViewById(R.id.pair_notes_text)).setText(currentPair.getNotes());
+                                    ((CheckBox)findViewById(R.id.pair_done)).setChecked(currentPair.is_done);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError error) {
+                                    // Failed to read value
+                                    Log.w("V", "Failed to read value.", error.toException());
+                                    Toast.makeText(context, loadFailureText, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("V", "Failed to read value.", error.toException());
+                            Toast.makeText(context, loadFailureText, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
                 }
 
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value
                     Log.w("V", "Failed to read value.", error.toException());
+                    Toast.makeText(context, loadFailureText, Toast.LENGTH_SHORT).show();
                 }
             });
 
         }
-
-        // TODO: display information from the viewedPair object
-        setDisplayInfo();
-    }
-
-    void setDisplayInfo() {
-        Log.v("TESTING","start of setDisplayInfo");
-        TextView nameView = (TextView) findViewById(R.id.pair_name_text);
-        nameView.setText(currentPair.getName());
-        TextView notesView = (TextView) findViewById(R.id.pair_notes_text);
-        notesView.setText(currentPair.getNotes());
-        Log.v("TESTING","setting images in setDisplayInfo");
-        ImageView stitchImgView = (ImageView) findViewById(R.id.pickedPattern);
-        stitchImgView.setImageResource(Stitch.getDrawableId(currentPair.getStitch()));
-        Log.v("TESTING","successfully set stitch image");
-        ImageView itemImgView = (ImageView) findViewById(R.id.ItemPicked);
-        itemImgView.setImageResource(Item.getDrawableId(currentPair.getItem()));
-        Log.v("TESTING","end of setDisplayInfo");
     }
 
     public void editPairInfo(View view) {
         Intent intent = new Intent(this, EditPairActivity.class);
-        intent.putExtra(Keys.PAIR_ID, pairId);
-        intent.putExtra(Keys.USER_ID, userId);
+        // intent.putExtra(Keys.PAIR_ID, pairId);
+        if(!(pairId.contains("TEST") || pairId.contains("fake"))) {
+            intent.putExtra(Keys.PAIR_ID, pairId);
+        }
+        // intent.putExtra(Keys.USER_ID, userId);
         startActivity(intent);
     }
 

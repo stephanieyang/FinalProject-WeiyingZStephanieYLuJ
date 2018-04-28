@@ -39,12 +39,4 @@
         android:onClick="viewPairInfo"
         />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="viewPairInfo"
-        android:layout_marginTop="500dp"
-        android:text="View pair info"
-        />
-
 </LinearLayout>

@@ -19,6 +19,7 @@
             android:orientation="vertical"
             android:layout_weight="1">
             <ImageView
+                android:id="@+id/pair_stitch_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/stockinette"
@@ -26,6 +27,7 @@
                 android:layout_marginBottom="0dp"
                 />
             <TextView
+                android:id="@+id/pair_stitch_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
@@ -40,10 +42,12 @@
             android:orientation="vertical"
             android:layout_weight="1">
             <ImageView
+                android:id="@+id/pair_item_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/hat" />
             <TextView
+                android:id="@+id/pair_item_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
@@ -70,7 +74,7 @@
             android:inputType="textLongMessage"
             />
         <CheckBox
-            android:id="@+id/pair_done"
+            android:id="@+id/pair_done_entry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="true"

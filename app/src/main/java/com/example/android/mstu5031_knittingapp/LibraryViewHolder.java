@@ -19,6 +19,7 @@ public class LibraryViewHolder extends RecyclerView.ViewHolder {
     public CardView cardView;
     public TextView patternName;
     public ImageView patternPhoto;
+    public ImageView itemPhoto;
     Context context;
 
 
@@ -27,21 +28,8 @@ public class LibraryViewHolder extends RecyclerView.ViewHolder {
         cardView=(CardView)itemView.findViewById(R.id.card_view_library);
         patternName=(TextView)itemView.findViewById(R.id.text);
         patternPhoto=(ImageView)itemView.findViewById(R.id.image);
+        itemPhoto = (ImageView)itemView.findViewById(R.id.image2);
         this.context = context;
-
-
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
-
-
-    }
-
-    public void viewLibraryItem() {
-        Toast.makeText(context,patternName.getText(), Toast.LENGTH_SHORT).show();
     }
 
 

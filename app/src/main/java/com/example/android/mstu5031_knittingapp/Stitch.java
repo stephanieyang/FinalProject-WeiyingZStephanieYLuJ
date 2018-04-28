@@ -1,10 +1,9 @@
 package com.example.android.mstu5031_knittingapp;
 
 public class Stitch {
-    public String name0;
-    public String image_name0;
+    public String name;
+    public String image_name;
     public String directions;
-    public int imageId0;
 
 //    public Stitch() {
 //        this.name = "foo";
@@ -13,35 +12,30 @@ public class Stitch {
 //
 //    }
 
-    public Stitch(String name, String image_name, String directions, int imageId){
-        this.name0 = name;
-        this.image_name0 = image_name;
+    public Stitch(String name, String image_name, String directions) {
+        this.name = name;
+        this.image_name = image_name;
         this.directions = directions;
-        this.imageId0=imageId;
     }
 
     public String getImage_name() {
-        return image_name0;
-    }
-
-    public int getImageId() {
-        return imageId0;
+        return image_name;
     }
 
     public String getName() {
-        return name0;
+        return name;
     }
 
     public void setName(String name) {
-        this.name0 = name;
+        this.name = name;
     }
 
     public String getImageName() {
-        return image_name0;
+        return image_name;
     }
 
     public void setImageId(String image_name) {
-        this.image_name0 = image_name;
+        this.image_name = image_name;
     }
 
     public String getDirections() {
@@ -50,8 +44,8 @@ public class Stitch {
 
     public void setDirections(String directions) { this.directions = directions; }
 
-    public static int getDrawableId(String name) {
-        switch(name) {
+    public static int getDrawableId(String imgName) {
+        switch(imgName) {
             case "chevron":
                 return R.drawable.chevron;
             case "crossed_loop_cable":
@@ -98,6 +92,57 @@ public class Stitch {
                 return R.drawable.woven_transverse_herringbone;
             default:
                 return 0; // shouldn't happen
+        }
+    }
+
+    public static String imgNameToFullName(String imgName) {
+        switch(imgName) {
+            case "chevron":
+                return "Chevron";
+            case "crossed_loop":
+                return "";
+            case "daisy":
+                return "";
+            case "diamond_lattice":
+                return "";
+            case "faux_braid":
+                return "";
+            case "garter":
+                return "";
+            case "horseshoe":
+                return "";
+            case "japanese_feather":
+                return "";
+            case "king_charles_brocade":
+                return "";
+            case "long_slip_textured":
+                return "";
+            case "old_shale":
+                return "";
+            case "parallelogram":
+                return "";
+            case "pie_crust_basketweave":
+                return "";
+            case "rib1":
+                return "";
+            case "rib2":
+                return "";
+            case "scroll_lace":
+                return "";
+            case "seed":
+                return "";
+            case "slipped_hourglass":
+                return "";
+            case "stockinette":
+                return "";
+            case "twist_zigzag":
+                return "";
+            case "vine_lace":
+                return "";
+            case "woven_transverse_herringbone":
+                return "";
+            default:
+                return ""; // shouldn't happen
         }
     }
 }

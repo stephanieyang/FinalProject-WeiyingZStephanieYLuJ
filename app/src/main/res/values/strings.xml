@@ -22,5 +22,6 @@
     <string name="delete_notice_text">Pair deleted</string>
     <string name="login_text">Log In</string>
     <string name="password_hint">Password</string>
-    <string name="Edit_in_lib">EDIT</string>
+    <string name="view_in_lib">View</string>
+    <string name="load_failure_text">Failed to load data</string>
 </resources>

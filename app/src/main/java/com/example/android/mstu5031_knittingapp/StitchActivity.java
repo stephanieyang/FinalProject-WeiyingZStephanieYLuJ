@@ -46,9 +46,9 @@ public class StitchActivity extends AppCompatActivity {
 
     private void initialData() {
         Log.v("TESTING","here in initialData");
-        stitches.add(new Stitch("Daisy", "daisy","",R.drawable.daisy));
-        stitches.add(new Stitch("Chevron", "chevron","",R.drawable.chevron));
-        stitches.add(new Stitch("Horseshoe","horseshoe","", R.drawable.horseshoe));
+        stitches.add(new Stitch("Daisy", "daisy",""));
+        stitches.add(new Stitch("Chevron", "chevron",""));
+        stitches.add(new Stitch("Horseshoe","horseshoe",""));
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -78,11 +78,11 @@ public class StitchActivity extends AppCompatActivity {
     private Stitch getRandomStitch() {
         int num = (int) (Math.random() * 2);
         if (num == 0)
-            return new Stitch("Daisy", "daisy", "", R.drawable.daisy);
+            return new Stitch("Daisy", "daisy", "");
         else if (num == 1)
-            return new Stitch("Chevron", "", "", R.drawable.chevron);
+            return new Stitch("Chevron", "", "");
         else
-            return new Stitch("Horseshoe", "", "", R.drawable.horseshoe);
+            return new Stitch("Horseshoe", "", "");
     }
 }
 
