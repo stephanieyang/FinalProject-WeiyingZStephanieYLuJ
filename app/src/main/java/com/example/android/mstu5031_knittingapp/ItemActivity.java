@@ -140,7 +140,7 @@ public class ItemActivity extends AppCompatActivity {
                 textView = (TextView) currentView; //Found it!
                 Log.v("TESTING", textView.getText().toString());
                 String itemImgName = Item.getImgNameFromName(textView.getText().toString());
-                Log.v("TESTING","calling chooseItemWithSelection");
+                Log.v("TESTING","calling chooseItemWithSelection with item " + itemImgName);
                 chooseItemWithSelection(itemImgName);
                 return;
             }
@@ -161,7 +161,7 @@ public class ItemActivity extends AppCompatActivity {
         if(otherPicked) {
             Log.v("TESTING","otherPicked = true");
             Intent intent = new Intent(this, EditPairActivity.class);
-            String stitchImgName = intent.getStringExtra(Keys.STITCH_NAME);
+            String stitchImgName = prevIntent.getStringExtra(Keys.STITCH_NAME);
 
             intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_CREATED);
             // add in stitch/item component info; rest gets filled in on the edit screen

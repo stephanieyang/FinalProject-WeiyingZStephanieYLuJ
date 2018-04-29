@@ -2,24 +2,24 @@ package com.example.android.mstu5031_knittingapp;
 
 public class Stitch {
     public String name;
-    public String image_name;
+    public String img_name;
     public String directions;
 
     public Stitch() {
         this.name = "foo";
-        this.image_name = "foo_img";
+        this.img_name = "foo_img";
         this.directions = "foo_dir";
 
     }
 
-    public Stitch(String name, String image_name, String directions) {
+    public Stitch(String name, String img_name, String directions) {
         this.name = name;
-        this.image_name = image_name;
+        this.img_name = img_name;
         this.directions = directions;
     }
 
     public String getImage_name() {
-        return image_name;
+        return img_name;
     }
 
     public String getName() {
@@ -31,11 +31,7 @@ public class Stitch {
     }
 
     public String getImageName() {
-        return image_name;
-    }
-
-    public void setImageId(String image_name) {
-        this.image_name = image_name;
+        return img_name;
     }
 
     public String getDirections() {

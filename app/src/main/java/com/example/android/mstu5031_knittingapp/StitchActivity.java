@@ -153,7 +153,7 @@ public class StitchActivity extends AppCompatActivity {
         if(otherPicked) {
             Log.v("TESTING","otherPicked = true");
             Intent intent = new Intent(this, EditPairActivity.class);
-            String itemImgName = intent.getStringExtra(Keys.ITEM_NAME);
+            String itemImgName = prevIntent.getStringExtra(Keys.ITEM_NAME);
 
             intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_CREATED);
             // add in stitch/item component info; rest gets filled in on the edit screen
