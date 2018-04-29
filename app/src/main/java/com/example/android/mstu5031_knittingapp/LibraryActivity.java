@@ -58,20 +58,8 @@ public class LibraryActivity extends AppCompatActivity {
         recylerView.setHasFixedSize(true);
         recylerView.setLayoutManager(new LinearLayoutManager(this));
 
-        libraryAdapter=new LibraryAdapter(patterns, this, new LibraryItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                Log.d("TESTING", "clicked position:" + position);
-                // do what ever you want to do with it
-            }
-        });
-        recylerView.setAdapter(new LibraryAdapter(patterns, this, new LibraryItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                Log.d("TESTING", "clicked position:" + position);
-                // do what ever you want to do with it
-            }
-        }));
+        libraryAdapter=new LibraryAdapter(patterns, this);
+        recylerView.setAdapter(new LibraryAdapter(patterns, this));
         recylerView.setAdapter(libraryAdapter);
 
 

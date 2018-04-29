@@ -28,9 +28,9 @@ public class StitchAdapter extends RecyclerView.Adapter<StitchViewHolder> {
     @Override
     public void onBindViewHolder(StitchViewHolder holder, int position) {
 //
-//        Stitch stitch=stitches.get(position);
-//        holder.stitchName.setText(stitch.name0);
-//        holder.stitchPhoto.setImageResource(stitch.imageId0);
+        Stitch stitch=stitches.get(position);
+        holder.stitchName.setText(stitch.getName());
+        holder.stitchPhoto.setImageResource(Stitch.getDrawableIdFromImgName(stitch.getImage_name()));
 
     }
 

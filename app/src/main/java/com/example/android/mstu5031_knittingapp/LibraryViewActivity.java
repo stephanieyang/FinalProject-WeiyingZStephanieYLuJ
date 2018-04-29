@@ -38,6 +38,7 @@ public class LibraryViewActivity extends AppCompatActivity {
     private List<UserCreatedPair> patterns;
     private LibraryAdapter LibraryAdapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private RecyclerView recyclerView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -70,19 +71,12 @@ public class LibraryViewActivity extends AppCompatActivity {
 
         initialData();
 
-        RecyclerView recylerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recylerView.setHasFixedSize(true);
-        recylerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         final Context context = this;
 
         //LibraryAdapter=new LibraryAdapter(patterns, this);
-        recylerView.setAdapter(new LibraryAdapter(patterns, this, new LibraryItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                Log.v("TESTING", "clicked position:" + position);
-                // do what ever you want to do with it
-            }
-        }));
         //recylerView.setAdapter(LibraryAdapter);
 
 
@@ -122,6 +116,7 @@ public class LibraryViewActivity extends AppCompatActivity {
         String userId = auth.getCurrentUser().getUid();
         Log.v("TESTING","got user id");
         DatabaseReference pairRef = database.getReference("users/" + userId + "/matches");
+        final Context context = this;
 
         final ArrayList<UserCreatedPair> allPairsList = new ArrayList<UserCreatedPair>();
 
@@ -141,6 +136,8 @@ public class LibraryViewActivity extends AppCompatActivity {
                 if(allPairsList.size() > 1) {
                     Log.d("V", allPairsList.get(0).getName() + " " + allPairsList.get(1).getName());
                 }
+                patterns = allPairsList;
+                recyclerView.setAdapter(new LibraryAdapter(patterns, context));
             }
 
             @Override
