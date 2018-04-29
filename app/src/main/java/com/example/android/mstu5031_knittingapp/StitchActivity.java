@@ -1,5 +1,6 @@
 package com.example.android.mstu5031_knittingapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class StitchActivity extends AppCompatActivity {
 
     private List<Stitch> stitches = new ArrayList<>();
     private StitchAdapter stitchesAdapter;
+    private RecyclerView recylerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +42,9 @@ public class StitchActivity extends AppCompatActivity {
 
         initialData();
 
-        RecyclerView recylerView = (RecyclerView) findViewById(R.id.recycler_view3);
+        recylerView = (RecyclerView) findViewById(R.id.recycler_view3);
         recylerView.setHasFixedSize(true);
         recylerView.setLayoutManager(new LinearLayoutManager(this));
-        stitchesAdapter=new StitchAdapter(stitches, this);
-        recylerView.setAdapter(new StitchAdapter(stitches, this));
-        recylerView.setAdapter(stitchesAdapter);
 
     }
 
@@ -54,6 +53,8 @@ public class StitchActivity extends AppCompatActivity {
         Log.v("TESTING","here in initialData");
         stitches.add(new Stitch("Daisy", "daisy",""));
         stitches.add(new Stitch("Chevron", "chevron",""));
+
+        final Context context = this;
 
 
 
@@ -74,6 +75,13 @@ public class StitchActivity extends AppCompatActivity {
                 }
                 Log.d("V", "Size of list is: " + stitchList.size());
                 Log.d("V", stitchList.get(0).getName() + " " + stitchList.get(1).getName());
+
+                Log.v("TESTING","done loading itemList in ItemActivity");
+                Log.v("TESTING",String.valueOf(stitchList.size()));
+                stitches = stitchList;
+                stitchesAdapter=new StitchAdapter(stitches, context);
+                recylerView.setAdapter(new StitchAdapter(stitches, context));
+                recylerView.setAdapter(stitchesAdapter);
             }
 
             @Override
@@ -82,8 +90,6 @@ public class StitchActivity extends AppCompatActivity {
                 Log.w("V", "Failed to read value.", error.toException());
             }
         });
-
-        // TODO: use stitchList to fill in the RecyclerView
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -159,6 +165,7 @@ public class StitchActivity extends AppCompatActivity {
             // add in stitch/item component info; rest gets filled in on the edit screen
             intent.putExtra(Keys.STITCH_NAME, stitchImgName);
             intent.putExtra(Keys.ITEM_NAME, itemImgName);
+            Log.v("TESTING","got stitch = " + stitchImgName + ", item = " + itemImgName);
             // don't need to put in a pair ID here, since one hasn't been created yet
             startActivity(intent);
         } else {

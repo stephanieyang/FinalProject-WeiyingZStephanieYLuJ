@@ -43,7 +43,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
         UserCreatedPair currentLib = lib.get(position);
 
         holder.patternName.setText(currentLib.getName());
-        holder.patternPhoto.setImageResource(Stitch.getDrawableIdFromImageName(currentLib.getStitch()));
+        holder.patternPhoto.setImageResource(Stitch.getDrawableIdFromImgName(currentLib.getStitch()));
         holder.itemPhoto.setImageResource(Item.getDrawableIdFromImgName(currentLib.getItem()));
 
     }
@@ -53,7 +53,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
         UserCreatedPair currentLib = lib.get(position);
 
         holder.patternName.setText(currentLib.getName());
-        holder.patternPhoto.setImageResource(Stitch.getDrawableIdFromImageName(currentLib.getStitch()));
+        holder.patternPhoto.setImageResource(Stitch.getDrawableIdFromImgName(currentLib.getStitch()));
         holder.itemPhoto.setImageResource(Item.getDrawableIdFromImgName(currentLib.getItem()));
     }
 

@@ -43,7 +43,7 @@ public class Stitch {
     /*
      * Convenience method for turning image names -> resource IDs
      */
-    public static int getDrawableIdFromImageName(String imgName) {
+    public static int getDrawableIdFromImgName(String imgName) {
         switch(imgName) {
             case "chevron":
                 return R.drawable.chevron;

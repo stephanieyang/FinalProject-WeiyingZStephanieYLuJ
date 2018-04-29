@@ -63,11 +63,11 @@ public class EditPairActivity extends AppCompatActivity {
             stitchImgName = intent.getStringExtra(Keys.STITCH_NAME);
             itemImgName = intent.getStringExtra(Keys.ITEM_NAME);
             Log.v("TESTING","stitch = " + stitchImgName + ", item = " + itemImgName);
-
-            // TODO: TAKE THIS PART OUT WHEN TESTING IS DONE
-            stitchImgName = "stockinette";
-            itemImgName = "gloves";
-
+            // based on the given info, modify the values onscreen
+            ((ImageView)findViewById(R.id.pair_item_img)).setImageResource(Item.getDrawableIdFromImgName(itemImgName));
+            ((TextView)findViewById(R.id.pair_item_name)).setText("");
+            ((ImageView)findViewById(R.id.pair_stitch_img)).setImageResource(Stitch.getDrawableIdFromImgName(stitchImgName));
+            ((TextView)findViewById(R.id.pair_stitch_name)).setText("");
         } else {
             Log.v("TESTING","pairID = " + pairId);
             // getting information from server
@@ -105,7 +105,7 @@ public class EditPairActivity extends AppCompatActivity {
                                     // with all data loaded, modify the values onscreen
                                     ((ImageView)findViewById(R.id.pair_item_img)).setImageResource(Item.getDrawableIdFromImgName(currentItem.getImage_name()));
                                     ((TextView)findViewById(R.id.pair_item_name)).setText(currentItem.getName());
-                                    ((ImageView)findViewById(R.id.pair_stitch_img)).setImageResource(Item.getDrawableIdFromImgName(currentStitch.getImage_name()));
+                                    ((ImageView)findViewById(R.id.pair_stitch_img)).setImageResource(Stitch.getDrawableIdFromImgName(currentStitch.getImage_name()));
                                     ((TextView)findViewById(R.id.pair_stitch_name)).setText(currentStitch.getName());
                                     ((EditText)findViewById(R.id.pair_name_entry)).setText(currentPair.getName());
                                     ((EditText)findViewById(R.id.pair_notes_entry)).setText(currentPair.getNotes());
