@@ -62,6 +62,7 @@ public class EditPairActivity extends AppCompatActivity {
             Log.v("TESTING", "pair does not exist");
             stitchImgName = intent.getStringExtra(Keys.STITCH_NAME);
             itemImgName = intent.getStringExtra(Keys.ITEM_NAME);
+            Log.v("TESTING","stitch = " + stitchImgName + ", item = " + itemImgName);
 
             // TODO: TAKE THIS PART OUT WHEN TESTING IS DONE
             stitchImgName = "stockinette";

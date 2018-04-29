@@ -64,6 +64,36 @@ public class ItemActivity extends AppCompatActivity {
         items.add(new Item("Hat", "hat", R.drawable.hat));
         items.add(new Item("Hat1", "hat1", R.drawable.hat1));
         items.add(new Item("Hat2", "hat2",R.drawable.hat2));
+
+
+
+        final ArrayList<Item> itemList = new ArrayList<Item>();
+
+        DatabaseReference itemLibRef = database.getReference("items");
+        Log.v("V","starting read");
+        // Read from the database
+        itemLibRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (DataSnapshot singleSnapshot: dataSnapshot.getChildren()) {
+                    Item currentItem = singleSnapshot.getValue(Item.class);
+                    itemList.add(currentItem);
+
+                }
+                Log.d("V", "Size of list is: " + itemList.size());
+                Log.d("V", itemList.get(0).getName() + " " + itemList.get(1).getName());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("V", "Failed to read value.", error.toException());
+            }
+        });
+
+        // TODO: use itemList to fill in the RecyclerView
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

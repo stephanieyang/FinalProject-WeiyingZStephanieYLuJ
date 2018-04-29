@@ -25,32 +25,6 @@ public class FakeItemLibraryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         otherPicked = intent.getBooleanExtra(Keys.OTHER_PICKED,false);
-
-        final ArrayList<Item> itemList = new ArrayList<Item>();
-
-        DatabaseReference stitchLibRef = database.getReference("items");
-        Log.v("V","starting read");
-        // Read from the database
-        stitchLibRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                for (DataSnapshot singleSnapshot: dataSnapshot.getChildren()) {
-                    Item currentItem = singleSnapshot.getValue(Item.class);
-                    itemList.add(currentItem);
-
-                }
-                Log.d("V", "Size of list is: " + itemList.size());
-                Log.d("V", itemList.get(0).getName() + " " + itemList.get(1).getName());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("V", "Failed to read value.", error.toException());
-            }
-        });
     }
 
     public void chooseStitch(View view) {
