@@ -61,9 +61,9 @@ public class ItemActivity extends AppCompatActivity {
 
     private void initialData() {
         items = new ArrayList<>();
-        items.add(new Item("Hat", "hat", R.drawable.hat));
-        items.add(new Item("Hat1", "hat1", R.drawable.hat1));
-        items.add(new Item("Hat2", "hat2",R.drawable.hat2));
+        items.add(new Item("Hat", "hat"));
+        items.add(new Item("Hat1", "hat1"));
+        items.add(new Item("Hat2", "hat2"));
 
 
 
@@ -78,7 +78,7 @@ public class ItemActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for (DataSnapshot singleSnapshot: dataSnapshot.getChildren()) {
-                    Item currentItem = singleSnapshot.getValue(Item.class);
+                    Item currentItem = (Item)singleSnapshot.getValue(Item.class);
                     itemList.add(currentItem);
 
                 }
@@ -123,11 +123,11 @@ public class ItemActivity extends AppCompatActivity {
     private Item getRandomItem() {
         int num = (int) (Math.random() * 2);
         if (num == 0)
-            return new Item("Hat", "hat", R.drawable.hat);
+            return new Item("Hat", "hat");
         else if (num == 1)
-            return new Item("Hat1", "hat1", R.drawable.hat1);
+            return new Item("Hat1", "hat1");
         else
-            return new Item("Hat2", "hat2", R.drawable.hat2);
+            return new Item("Hat2", "hat2");
     }
 
     public void chooseItem(View view) {

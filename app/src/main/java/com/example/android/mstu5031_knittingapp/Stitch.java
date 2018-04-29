@@ -5,12 +5,12 @@ public class Stitch {
     public String image_name;
     public String directions;
 
-//    public Stitch() {
-//        this.name = "foo";
-//        this.image_name = "foo_img";
-//        this.directions = "foo_dir";
-//
-//    }
+    public Stitch() {
+        this.name = "foo";
+        this.image_name = "foo_img";
+        this.directions = "foo_dir";
+
+    }
 
     public Stitch(String name, String image_name, String directions) {
         this.name = name;

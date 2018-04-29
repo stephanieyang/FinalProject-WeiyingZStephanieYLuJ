@@ -68,7 +68,7 @@ public class StitchActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for (DataSnapshot singleSnapshot: dataSnapshot.getChildren()) {
-                    Stitch currentStitch = singleSnapshot.getValue(Stitch.class);
+                    Stitch currentStitch = (Stitch)singleSnapshot.getValue(Stitch.class);
                     stitchList.add(currentStitch);
 
                 }

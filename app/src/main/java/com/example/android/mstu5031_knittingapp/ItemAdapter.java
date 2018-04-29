@@ -25,8 +25,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Item item=items.get(position);
-        holder.itemName.setText(item.name);
-        holder.itemPhoto.setImageResource(item.imageId);
+        holder.itemName.setText(item.getName());
+        holder.itemPhoto.setImageResource(Item.getDrawableIdFromImgName(item.getImage_name()));
 
     }
 

@@ -8,22 +8,17 @@ public class Item {
 
         public String name;
         public String image_name;
-        public int imageId;
 
-//        public Item() {
-//            this.name = "foo";
-//            this.image_name = "foo_img";
-//        }
-
-        public Item(String name, String image_name, int imageId) {
-            this.name = name;
-            this.image_name = image_name;
-            this.imageId = imageId;
+        public Item() {
+            this.name = "foo";
+            this.image_name = "foo_img";
         }
 
-    public int getImageId() {
-        return imageId;
-    }
+        public Item(String name, String image_name) {
+            this.name = name;
+            this.image_name = image_name;
+        }
+
 
     public String getName() {
             return name;
