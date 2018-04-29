@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemActivity extends AppCompatActivity {
+    Intent prevIntent;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     private List<Item> items;
     private ItemAdapter itemsAdapter;
@@ -90,6 +92,29 @@ public class ItemActivity extends AppCompatActivity {
             return new Item("Hat1", "hat1", R.drawable.hat1);
         else
             return new Item("Hat2", "hat2", R.drawable.hat2);
+    }
+
+    /*
+     * For when a user chooses some item.
+     * Determines whether to progress to stitch selection (if user hasn't selected a stitch) or the library (if user has).
+     */
+    public void chooseItem(String itemImgName) {
+        boolean otherPicked = prevIntent.getBooleanExtra(Keys.OTHER_PICKED,false);
+        if(otherPicked) {
+            Intent intent = new Intent(this, EditPairActivity.class);
+            String stitchImgName = intent.getStringExtra(Keys.STITCH_NAME);
+            intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_CREATED);
+            // add in stitch/item component info; rest gets filled in on the edit screen
+            intent.putExtra(Keys.STITCH_NAME, stitchImgName);
+            intent.putExtra(Keys.ITEM_NAME, itemImgName);
+            // don't need to put in a pair ID here, since one hasn't been created yet
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, StitchActivity.class);
+            intent.putExtra(Keys.OTHER_PICKED,true);
+            intent.putExtra(Keys.STITCH_NAME, itemImgName);
+            startActivity(intent);
+        }
     }
 }
 

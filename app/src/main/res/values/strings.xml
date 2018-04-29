@@ -16,6 +16,8 @@
     <string name="email_hint">E-mail</string>
     <string name="save_text">Save</string>
     <string name="edit_text">Edit</string>
+    <string name="photo_upload_text">Upload photo of finished item</string>
+    <string name="photo_view_text">View photo of finished item</string>
     <string name="delete_text">Delete</string>
     <string name="create_notice_text">Pair created</string>
     <string name="save_notice_text">Pair saved</string>
@@ -24,4 +26,7 @@
     <string name="password_hint">Password</string>
     <string name="view_in_lib">View</string>
     <string name="load_failure_text">Failed to load data</string>
+    <string name="upload_failure_text">Failed to upload data</string>
+    <string name="photo_success_text">Successfully took photo</string>
+    <string name="upload_unallowed_text">Upload allowed only for completed items</string>
 </resources>

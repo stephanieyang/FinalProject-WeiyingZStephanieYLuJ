@@ -86,6 +86,7 @@ public class LibraryViewActivity extends AppCompatActivity {
         //recylerView.setAdapter(LibraryAdapter);
 
 
+        // handle pair status messages
         Intent intent = getIntent();
         String status = intent.getStringExtra(Keys.PAIR_STATUS);
         if(status == null) return;
@@ -185,25 +186,16 @@ public class LibraryViewActivity extends AppCompatActivity {
 
     public void viewPairInfo (View view) {
         Intent intent = new Intent(this, ViewPairActivity.class);
-
-//        FirebaseAuth auth = FirebaseAuth.getInstance();
-//        String userId = auth.getCurrentUser().getUid();
-//        intent.putExtra(Keys.USER_ID, userId);
         intent.putExtra(Keys.PAIR_ID, "TEST_ID"); // TODO: GENERATE THIS FOR REAL
         Log.v("TESTING","LibraryViewActivity: Starting intent");
         startActivity(intent);
     }
 
     public void deletePairInfo(View view) {
-        //Intent intent = new Intent(this, ViewPairActivity.class);
         Intent intent = new Intent(this, LibraryViewActivity.class);
         intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_DELETED);
         startActivity(intent);
     }
-
-    // TODO:
-    // when a stitch/item pair's card is selected, open up a ViewPairActivity for that pair
-    // (will want to pass the ID of that pair via intent)
 
 
 }

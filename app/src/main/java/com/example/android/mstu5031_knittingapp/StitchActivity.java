@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StitchActivity extends AppCompatActivity {
+    Intent prevIntent;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     private List<Stitch> stitches = new ArrayList<>();
     private StitchAdapter stitchesAdapter;
@@ -31,6 +33,8 @@ public class StitchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stitch);
         Log.v("TESTING","here in onCreate");
+
+        prevIntent = getIntent();
 
         initialData();
 
@@ -83,6 +87,29 @@ public class StitchActivity extends AppCompatActivity {
             return new Stitch("Chevron", "", "");
         else
             return new Stitch("Horseshoe", "", "");
+    }
+
+    /*
+     * For when a user chooses some stitch.
+     * Determines whether to progress to item selection (if user hasn't selected an item) or the library (if user has).
+     */
+    public void chooseStitch(String stitchImgName) {
+        boolean otherPicked = prevIntent.getBooleanExtra(Keys.OTHER_PICKED,false);
+        if(otherPicked) {
+            Intent intent = new Intent(this, EditPairActivity.class);
+            String itemImgName = intent.getStringExtra(Keys.ITEM_NAME);
+            intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_CREATED);
+            // add in stitch/item component info; rest gets filled in on the edit screen
+            intent.putExtra(Keys.STITCH_NAME, stitchImgName);
+            intent.putExtra(Keys.ITEM_NAME, itemImgName);
+            // don't need to put in a pair ID here, since one hasn't been created yet
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, ItemActivity.class);
+            intent.putExtra(Keys.OTHER_PICKED,true);
+            intent.putExtra(Keys.STITCH_NAME, stitchImgName);
+            startActivity(intent);
+        }
     }
 }
 

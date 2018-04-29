@@ -53,36 +53,31 @@ public class ViewPairActivity extends AppCompatActivity {
             currentPair = new UserCreatedPair(false,"0001","hat","twist_zigzag","cool hat","for me","");
             Log.v("TESTING", "Name of pair is: " +  currentPair.getName());
         } else {
-            // read info from database
-            //DatabaseReference pairRef = database.getReference("users/" + userId + "/matches/" + pairId);
+            // getting information from server
             final String loadFailureText = this.getResources().getString(R.string.load_failure_text);
-            //UserCreatedPair currentPair;
 
-            // read stitch info
             // Read from the database
             pairRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
                     final UserCreatedPair currentPair = dataSnapshot.getValue(UserCreatedPair.class);
                     Log.d("V", "Read pair is: " + currentPair.getName());
 
+
+                    // because UserCreatedPair only holds stitch/item names, we have to read from the database again to get info for each
                     DatabaseReference stitchRef = database.getReference("stitches/" + currentPair.getStitch());
                     final DatabaseReference itemRef = database.getReference("items/" + currentPair.getItem());
 
                     stitchRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            // This method is called once with the initial value and again
-                            // whenever data at this location is updated.
+                            // get stitch data
                             final Stitch currentStitch = dataSnapshot.getValue(Stitch.class);
                             Log.d("V", "Read stitch is: " + currentStitch.getName());
                             itemRef.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // This method is called once with the initial value and again
-                                    // whenever data at this location is updated.
+                                    // get item data
                                     Item currentItem = dataSnapshot.getValue(Item.class);
                                     Log.d("V", "Read pair is: " + currentItem.getName());
 
@@ -101,6 +96,7 @@ public class ViewPairActivity extends AppCompatActivity {
                                 public void onCancelled(DatabaseError error) {
                                     // Failed to read value
                                     Log.w("V", "Failed to read value.", error.toException());
+                                    // error message toast
                                     Toast.makeText(context, loadFailureText, Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -131,14 +127,15 @@ public class ViewPairActivity extends AppCompatActivity {
     public void editPairInfo(View view) {
         Intent intent = new Intent(this, EditPairActivity.class);
         // intent.putExtra(Keys.PAIR_ID, pairId);
+        // TODO: take the following block out when everything works
         if(!(pairId.contains("TEST") || pairId.contains("fake"))) {
             intent.putExtra(Keys.PAIR_ID, pairId);
         }
-        // intent.putExtra(Keys.USER_ID, userId);
         startActivity(intent);
     }
 
     public void deletePairInfo(View view) {
+        // TODO: take the following line out when everything works
         if(userId == "" || pairId == "" || pairId == "TEST_ID") return; // for testing
         DatabaseReference pairRef = database.getReference("users/" + userId + "/matches/" + pairId);
         pairRef.removeValue();

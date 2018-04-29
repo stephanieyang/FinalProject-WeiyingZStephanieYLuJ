@@ -15,4 +15,5 @@ public interface Keys {
     public String ITEM_NAME = "ITEM_NAME";
     public String USER_ID = "USER_ID";
     public String PAIR_EXISTS = "PAIR_EXISTS";
+    public String VIEW_PHOTO = "VIEW_PHOTO";
 }

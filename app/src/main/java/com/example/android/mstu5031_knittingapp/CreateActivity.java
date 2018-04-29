@@ -25,14 +25,7 @@ public class CreateActivity extends AppCompatActivity {
         intent.putExtra(Keys.OTHER_PICKED,false);
         startActivity(intent);
     }
-//    public void chooseItem(View view) {
-////         in the full version, pull up a recycler view activity with stitch cards to choose
-////         here, we have a single dummy item that just transitions to the next page
-//
-//        Intent intent = new Intent(this, FakeItemLibraryActivity.class);
-//        intent.putExtra(Keys.OTHER_PICKED,false);
-//        startActivity(intent);
-//    }
+
     public void pickItem(View view){
         Intent pickItem=new Intent(this,ItemActivity.class);
         pickItem.putExtra(Keys.OTHER_PICKED,false);

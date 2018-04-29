@@ -26,6 +26,7 @@ public class UserCreatedPair {
 
         public UserCreatedPair(boolean is_done, String id, String item, String stitch, String name, String notes, String user_photo) {
             this.is_done = is_done;
+            this.id = id;
             this.item = item;
             this.stitch = stitch;
             this.name = name;

@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Knit Picker</string>
+    <string name="title_activity_lib">LibActivity</string>
+    <string name="title_home">Écran d\\'accueil</string>
+    <string name="title_dashboard">Tableau de bord</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="stitch_label">Point</string>
+    <string name="item_label">Article</string>
+    <string name="name_label">Prénom</string>
+    <string name="note_label">Remarque</string>
+    <string name="form_name_label">Prénom: </string>
+    <string name="form_name_hint">Entrez le nom ici</string>
+    <string name="form_notes_label">Description/Remarques:</string>
+    <string name="form_notes_hint">Entrez la description ici</string>
+    <string name="done_hint">Terminé</string>
+    <string name="email_hint">Email</string>
+    <string name="save_text">Sauvegarder</string>
+    <string name="edit_text">Modifier</string>
+    <string name="photo_upload_text">Importer une photo de l\\'élément fini</string>
+    <string name="photo_view_text">Voir la photo de l\\'élément fini</string>
+    <string name="delete_text">Effacer</string>
+    <string name="create_notice_text">Paire créée</string>
+    <string name="save_notice_text">Paire sauvegardée</string>
+    <string name="delete_notice_text">Paire effacée</string>
+    <string name="login_text">S\'identifier</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="view_in_lib">Voir</string>
+    <string name="load_failure_text">Impossible de charger les données</string>
+    <string name="upload_failure_text">Impossible de télécharger les données</string>
+    <string name="photo_success_text">A pris avec succès une photo</string>
+    <string name="upload_unallowed_text">Téléchargement autorisé uniquement pour les éléments terminés</string>
+</resources>

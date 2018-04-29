@@ -102,5 +102,13 @@
             />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/photo_upload_text"
+        android:onClick="doPhotoAction"
+        />
 
 </LinearLayout>

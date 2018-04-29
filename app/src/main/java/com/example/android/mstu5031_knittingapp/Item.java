@@ -43,6 +43,9 @@ public class Item {
 
 
 
+    /*
+     * Convenience method for turning image names -> resource IDs
+     */
     public static int getDrawableId(String name) {
         switch(name) {
             case "hat":

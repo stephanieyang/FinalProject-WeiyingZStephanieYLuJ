@@ -44,6 +44,9 @@ public class Stitch {
 
     public void setDirections(String directions) { this.directions = directions; }
 
+    /*
+     * Convenience method for turning image names -> resource IDs
+     */
     public static int getDrawableId(String imgName) {
         switch(imgName) {
             case "chevron":
@@ -92,57 +95,6 @@ public class Stitch {
                 return R.drawable.woven_transverse_herringbone;
             default:
                 return 0; // shouldn't happen
-        }
-    }
-
-    public static String imgNameToFullName(String imgName) {
-        switch(imgName) {
-            case "chevron":
-                return "Chevron";
-            case "crossed_loop":
-                return "";
-            case "daisy":
-                return "";
-            case "diamond_lattice":
-                return "";
-            case "faux_braid":
-                return "";
-            case "garter":
-                return "";
-            case "horseshoe":
-                return "";
-            case "japanese_feather":
-                return "";
-            case "king_charles_brocade":
-                return "";
-            case "long_slip_textured":
-                return "";
-            case "old_shale":
-                return "";
-            case "parallelogram":
-                return "";
-            case "pie_crust_basketweave":
-                return "";
-            case "rib1":
-                return "";
-            case "rib2":
-                return "";
-            case "scroll_lace":
-                return "";
-            case "seed":
-                return "";
-            case "slipped_hourglass":
-                return "";
-            case "stockinette":
-                return "";
-            case "twist_zigzag":
-                return "";
-            case "vine_lace":
-                return "";
-            case "woven_transverse_herringbone":
-                return "";
-            default:
-                return ""; // shouldn't happen
         }
     }
 }
