@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -88,15 +90,41 @@ public class StitchActivity extends AppCompatActivity {
             return new Stitch("Horseshoe", "", "");
     }
 
+
+
+    public void chooseStitch(View view) {
+        Log.v("TESTING", "here in chooseStitch");
+        ViewGroup group = (ViewGroup) view.getParent();
+        TextView textView;
+        for (int i = 0; i < group.getChildCount(); i++) {
+            View currentView = group.getChildAt(i);
+            if (currentView instanceof TextView) {
+                textView = (TextView) currentView;
+                Log.v("TESTING", textView.getText().toString());
+                String stitchImgName = Stitch.getImgNameFromName(textView.getText().toString());
+                Log.v("TESTING","calling chooseStitchWithSelection");
+                chooseStitchWithSelection(stitchImgName);
+                return;
+            }
+        }
+        Log.v("TESTING","Error: no stitch found");
+
+    }
+
     /*
-     * For when a user chooses some stitch.
-     * Determines whether to progress to item selection (if user hasn't selected an item) or the library (if user has).
+     * For when a user chooses some item.
+     * Determines whether to progress to stitch selection (if user hasn't selected a stitch) or the library (if user has).
      */
-    public void chooseStitch(String stitchImgName) {
+    private void chooseStitchWithSelection(String stitchImgName) {
+        Log.v("TESTING","start of chooseStitchWithSelection");
+
         boolean otherPicked = prevIntent.getBooleanExtra(Keys.OTHER_PICKED,false);
+        Log.v("TESTING","got otherPicked");
         if(otherPicked) {
+            Log.v("TESTING","otherPicked = true");
             Intent intent = new Intent(this, EditPairActivity.class);
             String itemImgName = intent.getStringExtra(Keys.ITEM_NAME);
+
             intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_CREATED);
             // add in stitch/item component info; rest gets filled in on the edit screen
             intent.putExtra(Keys.STITCH_NAME, stitchImgName);
@@ -104,6 +132,7 @@ public class StitchActivity extends AppCompatActivity {
             // don't need to put in a pair ID here, since one hasn't been created yet
             startActivity(intent);
         } else {
+            Log.v("TESTING","otherPicked = false");
             Intent intent = new Intent(this, ItemActivity.class);
             intent.putExtra(Keys.OTHER_PICKED,true);
             intent.putExtra(Keys.STITCH_NAME, stitchImgName);

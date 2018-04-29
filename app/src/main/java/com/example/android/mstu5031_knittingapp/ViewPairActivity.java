@@ -83,9 +83,9 @@ public class ViewPairActivity extends AppCompatActivity {
 
 
                                     // with all data loaded, modify the values onscreen
-                                    ((ImageView)findViewById(R.id.ItemPicked)).setImageResource(Item.getDrawableId(currentItem.getName()));
+                                    ((ImageView)findViewById(R.id.ItemPicked)).setImageResource(Item.getDrawableIdFromImgName(currentItem.getName()));
                                     ((TextView)findViewById(R.id.pair_item_name)).setText("");
-                                    ((ImageView)findViewById(R.id.pickedPattern)).setImageResource(Item.getDrawableId(currentStitch.getName()));
+                                    ((ImageView)findViewById(R.id.pickedPattern)).setImageResource(Item.getDrawableIdFromImgName(currentStitch.getName()));
                                     ((TextView)findViewById(R.id.pair_stitch_name)).setText("");
                                     ((TextView)findViewById(R.id.pair_name_text)).setText(currentPair.getName());
                                     ((TextView)findViewById(R.id.pair_notes_text)).setText(currentPair.getNotes());

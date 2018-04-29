@@ -19,17 +19,35 @@
             android:layout_marginRight="16dp"
             />
 
-        <TextView
-            android:id="@+id/text"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="59dp"
-            android:layout_marginRight="59dp"
-            android:text="hat"
-            android:textSize="40dp" />
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/image">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="59dp"
+                android:layout_marginRight="59dp"
+                android:text="hat"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/choose_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_text"
+                android:onClick="chooseItem"
+
+                />
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

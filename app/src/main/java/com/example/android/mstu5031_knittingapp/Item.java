@@ -46,7 +46,7 @@ public class Item {
     /*
      * Convenience method for turning image names -> resource IDs
      */
-    public static int getDrawableId(String name) {
+    public static int getDrawableIdFromImgName(String name) {
         switch(name) {
             case "hat":
                 return R.drawable.hat;
@@ -64,6 +64,34 @@ public class Item {
                 return R.drawable.sweater;
             default:
                 return 0; // shouldn't happen
+        }
+    }
+
+    /*
+     * Convenience method for turning names -> img names
+     */
+    public static String getImgNameFromName(String name) {
+        switch(name) {
+            case "Hat (puff)":
+                return "hat1";
+            case "Hat (beanie)":
+                return "hat2";
+            case "Hat":
+                return "hat";
+            case "Hat1":
+                return "hat1";
+            case "Hat2":
+                return "hat2";
+            case "Scarf":
+                return "scarf";
+            case "Gloves":
+                return "gloves";
+            case "Socks":
+                return "socks";
+            case "Sweater":
+                return "sweater";
+            default:
+                return ""; // shouldn't happen
         }
     }
 

@@ -102,9 +102,9 @@ public class EditPairActivity extends AppCompatActivity {
 
 
                                     // with all data loaded, modify the values onscreen
-                                    ((ImageView)findViewById(R.id.pair_item_img)).setImageResource(Item.getDrawableId(currentItem.getImage_name()));
+                                    ((ImageView)findViewById(R.id.pair_item_img)).setImageResource(Item.getDrawableIdFromImgName(currentItem.getImage_name()));
                                     ((TextView)findViewById(R.id.pair_item_name)).setText(currentItem.getName());
-                                    ((ImageView)findViewById(R.id.pair_stitch_img)).setImageResource(Item.getDrawableId(currentStitch.getImage_name()));
+                                    ((ImageView)findViewById(R.id.pair_stitch_img)).setImageResource(Item.getDrawableIdFromImgName(currentStitch.getImage_name()));
                                     ((TextView)findViewById(R.id.pair_stitch_name)).setText(currentStitch.getName());
                                     ((EditText)findViewById(R.id.pair_name_entry)).setText(currentPair.getName());
                                     ((EditText)findViewById(R.id.pair_notes_entry)).setText(currentPair.getNotes());

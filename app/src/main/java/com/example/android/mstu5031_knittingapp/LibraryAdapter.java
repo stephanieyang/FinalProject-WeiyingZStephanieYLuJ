@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.res.Resources;
 
 import java.util.List;
 
@@ -44,8 +43,8 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
         UserCreatedPair currentLib = lib.get(position);
 
         holder.patternName.setText(currentLib.getName());
-        holder.patternPhoto.setImageResource(Stitch.getDrawableId(currentLib.getStitch()));
-        holder.itemPhoto.setImageResource(Item.getDrawableId(currentLib.getItem()));
+        holder.patternPhoto.setImageResource(Stitch.getDrawableIdFromImageName(currentLib.getStitch()));
+        holder.itemPhoto.setImageResource(Item.getDrawableIdFromImgName(currentLib.getItem()));
 
     }
 
@@ -54,8 +53,8 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
         UserCreatedPair currentLib = lib.get(position);
 
         holder.patternName.setText(currentLib.getName());
-        holder.patternPhoto.setImageResource(Stitch.getDrawableId(currentLib.getStitch()));
-        holder.itemPhoto.setImageResource(Item.getDrawableId(currentLib.getItem()));
+        holder.patternPhoto.setImageResource(Stitch.getDrawableIdFromImageName(currentLib.getStitch()));
+        holder.itemPhoto.setImageResource(Item.getDrawableIdFromImgName(currentLib.getItem()));
     }
 
     @Override
