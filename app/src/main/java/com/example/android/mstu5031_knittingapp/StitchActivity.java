@@ -38,7 +38,7 @@ public class StitchActivity extends AppCompatActivity {
 
         initialData();
 
-        RecyclerView recylerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recylerView = (RecyclerView) findViewById(R.id.recycler_view3);
         recylerView.setHasFixedSize(true);
         recylerView.setLayoutManager(new LinearLayoutManager(this));
         stitchesAdapter=new StitchAdapter(stitches, this);
@@ -52,7 +52,6 @@ public class StitchActivity extends AppCompatActivity {
         Log.v("TESTING","here in initialData");
         stitches.add(new Stitch("Daisy", "daisy",""));
         stitches.add(new Stitch("Chevron", "chevron",""));
-        stitches.add(new Stitch("Horseshoe","horseshoe",""));
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

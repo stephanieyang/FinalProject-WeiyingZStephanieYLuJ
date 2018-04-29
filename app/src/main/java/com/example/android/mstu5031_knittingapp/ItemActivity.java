@@ -45,10 +45,10 @@ public class ItemActivity extends AppCompatActivity {
         recylerView1.setAdapter(itemsAdapter);
 
 
-        String itemName= (String) ((TextView) findViewById(R.id.text)).getText();
-        Intent mrIntent = new Intent(this, EditPairActivity.class);
-        mrIntent.putExtra(Keys.ITEM_NAME, itemName);
-        startActivity(mrIntent);
+//        String itemName = items.get(0).getImage_name();
+//        Intent mrIntent = new Intent(this, EditPairActivity.class);
+//        mrIntent.putExtra(Keys.ITEM_NAME, itemName);
+//        startActivity(mrIntent);
 
     }
 
@@ -92,6 +92,9 @@ public class ItemActivity extends AppCompatActivity {
             return new Item("Hat1", "hat1", R.drawable.hat1);
         else
             return new Item("Hat2", "hat2", R.drawable.hat2);
+    }
+
+    public void chooseItem(View view) {
     }
 
     /*

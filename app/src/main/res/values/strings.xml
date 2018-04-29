@@ -25,6 +25,7 @@
     <string name="login_text">Log In</string>
     <string name="password_hint">Password</string>
     <string name="view_in_lib">View</string>
+    <string name="choose_text">Choose</string>
     <string name="load_failure_text">Failed to load data</string>
     <string name="upload_failure_text">Failed to upload data</string>
     <string name="photo_success_text">Successfully took photo</string>

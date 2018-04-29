@@ -25,6 +25,7 @@
     <string name="login_text">S\'identifier</string>
     <string name="password_hint">Mot de passe</string>
     <string name="view_in_lib">Voir</string>
+    <string name="choose_text">Choisir</string>
     <string name="load_failure_text">Impossible de charger les données</string>
     <string name="upload_failure_text">Impossible de télécharger les données</string>
     <string name="photo_success_text">A pris avec succès une photo</string>
