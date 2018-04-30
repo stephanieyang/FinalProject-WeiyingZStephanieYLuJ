@@ -16,4 +16,5 @@ public interface Keys {
     public String USER_ID = "USER_ID";
     public String PAIR_EXISTS = "PAIR_EXISTS";
     public String VIEW_PHOTO = "VIEW_PHOTO";
+    public String STITCH_DIRECTIONS = "STITCH_DIRECTIONS";
 }

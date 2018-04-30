@@ -20,6 +20,7 @@ public class LibraryViewHolder extends RecyclerView.ViewHolder {
     public TextView patternName;
     public ImageView patternPhoto;
     public ImageView itemPhoto;
+    public TextView idText;
     Context context;
 
 
@@ -29,6 +30,7 @@ public class LibraryViewHolder extends RecyclerView.ViewHolder {
         patternName=(TextView)itemView.findViewById(R.id.text);
         patternPhoto=(ImageView)itemView.findViewById(R.id.image);
         itemPhoto = (ImageView)itemView.findViewById(R.id.image2);
+        idText = (TextView)itemView.findViewById(R.id.id_text);
         this.context = context;
     }
 

@@ -13,19 +13,6 @@
         android:text="Library"
         android:onClick="viewLibrary"
         />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Match Made"
-        android:onClick="viewMatchMade"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pair Info Page"
-        android:onClick="viewPairInfo"
-        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

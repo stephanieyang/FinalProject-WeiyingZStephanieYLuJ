@@ -30,4 +30,8 @@
     <string name="upload_failure_text">Failed to upload data</string>
     <string name="photo_success_text">Successfully took photo</string>
     <string name="upload_unallowed_text">Upload allowed only for completed items</string>
+    <string name="no_photo_text">No photo uploaded</string>
+    <string name="no_photo_notif_done">No photo exists - take one!</string>
+    <string name="no_photo_notif_undone">Only finished matches can have photos</string>
+    <string name="btn_stitch_text">View stitch instructions</string>
 </resources>

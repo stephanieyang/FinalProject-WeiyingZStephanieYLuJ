@@ -16,6 +16,7 @@ public class UserCreatedPair {
         String user_photo;
 
         public UserCreatedPair() {
+            this.id = "";
             this.is_done = false;
             this.item = "foo_item";
             this.stitch = "foo_stitch";

@@ -68,6 +68,19 @@ public class EditPairActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.pair_item_name)).setText("");
             ((ImageView)findViewById(R.id.pair_stitch_img)).setImageResource(Stitch.getDrawableIdFromImgName(stitchImgName));
             ((TextView)findViewById(R.id.pair_stitch_name)).setText("");
+
+            Button photoActionButton = (Button)findViewById(R.id.btn_photo);
+            if(!pairExists || ((viewedPair != null) && (!viewedPair.isIs_done()))) { // if user hasn't completed the item, don't let them upload a photo
+                photoActionButton.setClickable(false);
+                photoActionButton.setFocusable(false);
+                photoActionButton.setEnabled(false);
+            } else {
+                if(viewedPair.getUser_photo() != null && viewedPair.getUser_photo().length() > 0) { // user can upload photo where there is none
+                    photoActionButton.setText(R.string.photo_upload_text);
+                } else { // user can view photo that's already uploaded
+                    photoActionButton.setText(R.string.photo_view_text);
+                }
+            }
         } else {
             Log.v("TESTING","pairID = " + pairId);
             // getting information from server
@@ -80,6 +93,9 @@ public class EditPairActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     final UserCreatedPair currentPair = dataSnapshot.getValue(UserCreatedPair.class);
                     viewedPair = currentPair;
+                    if(currentPair == null) { // deletion
+                        return;
+                    }
                     Log.d("V", "Read pair is: " + currentPair.getName());
 
                     // because UserCreatedPair only holds stitch/item names, we have to read from the database again to get info for each
@@ -110,6 +126,22 @@ public class EditPairActivity extends AppCompatActivity {
                                     ((EditText)findViewById(R.id.pair_name_entry)).setText(currentPair.getName());
                                     ((EditText)findViewById(R.id.pair_notes_entry)).setText(currentPair.getNotes());
                                     ((CheckBox)findViewById(R.id.pair_done_entry)).setChecked(currentPair.isIs_done());
+
+
+
+
+                                    Button photoActionButton = (Button)findViewById(R.id.btn_photo);
+                                    if(!pairExists || ((viewedPair != null) && (!viewedPair.isIs_done()))) { // if user hasn't completed the item, don't let them upload a photo
+                                        photoActionButton.setClickable(false);
+                                        photoActionButton.setFocusable(false);
+                                        photoActionButton.setEnabled(false);
+                                    } else {
+                                        if(viewedPair.getUser_photo() != null && viewedPair.getUser_photo().length() > 0) { // user can view photo that's already uploaded
+                                            photoActionButton.setText(R.string.photo_view_text);
+                                        } else { // user can upload photo where there is none
+                                            photoActionButton.setText(R.string.photo_upload_text);
+                                        }
+                                    }
                                 }
 
                                 @Override
@@ -140,21 +172,6 @@ public class EditPairActivity extends AppCompatActivity {
                     Toast.makeText(context, loadFailureText, Toast.LENGTH_SHORT).show();
                 }
             });
-
-
-            Button photoActionButton = (Button)findViewById(R.id.btn_photo);
-            if(!pairExists || !viewedPair.isIs_done()) { // if user hasn't completed the item, don't let them upload a photo
-                photoActionButton.setClickable(false);
-                photoActionButton.setFocusable(false);
-                photoActionButton.setEnabled(false);
-            } else {
-                Toast.makeText(this, "Image view placeholder", Toast.LENGTH_SHORT).show();
-                if(viewedPair.getUser_photo() != null && viewedPair.getUser_photo().length() > 0) { // user can upload photo where there is none
-                    photoActionButton.setText(R.string.photo_upload_text);
-                } else { // user can view photo that's already uploaded
-                    photoActionButton.setText(R.string.photo_view_text);
-                }
-            }
         }
     }
 
@@ -165,7 +182,7 @@ public class EditPairActivity extends AppCompatActivity {
             // get info
             String pairName = ((EditText) findViewById(R.id.pair_name_entry)).getText().toString();
             String pairNotes = ((EditText) findViewById(R.id.pair_notes_entry)).getText().toString();
-            boolean isDone = ((CheckBox) findViewById(R.id.pair_done)).isChecked();
+            boolean isDone = ((CheckBox) findViewById(R.id.pair_done_entry)).isChecked();
             DatabaseReference currentPairRef = database.getReference("users/" + userId + "/matches/" + pairId);
             viewedPair.setName(pairName);
             viewedPair.setNotes(pairNotes);

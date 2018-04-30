@@ -45,6 +45,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
         holder.patternName.setText(currentLib.getName());
         holder.patternPhoto.setImageResource(Stitch.getDrawableIdFromImgName(currentLib.getStitch()));
         holder.itemPhoto.setImageResource(Item.getDrawableIdFromImgName(currentLib.getItem()));
+        holder.idText.setText(currentLib.getId());
 
     }
 

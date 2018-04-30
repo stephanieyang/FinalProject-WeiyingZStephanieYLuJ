@@ -30,4 +30,8 @@
     <string name="upload_failure_text">Impossible de télécharger les données</string>
     <string name="photo_success_text">A pris avec succès une photo</string>
     <string name="upload_unallowed_text">Téléchargement autorisé uniquement pour les éléments terminés</string>
+    <string name="no_photo_text">Aucune photo téléchargée</string>
+    <string name="no_photo_notif_done">Aucune photo n'existe - prenez-en une!</string>
+    <string name="no_photo_notif_undone">Seuls les matchs terminés peuvent avoir des photos</string>
+    <string name="btn_stitch_text">Voir les instructions de point</string>
 </resources>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import android.os.Bundle;
@@ -182,8 +183,29 @@ public class LibraryViewActivity extends AppCompatActivity {
     }
 
     public void viewPairInfo (View view) {
+        ViewGroup group = (ViewGroup) view.getParent();
+        TextView textView;
+        boolean found = false;
+        String pairId = "";
+        for (int i = 0; i < group.getChildCount(); i++) {
+            View currentView = group.getChildAt(i);
+            if (currentView instanceof TextView) {
+                textView = (TextView) currentView;
+                if(textView.getId() == R.id.id_text) {
+                    Log.v("TESTING","id = " + textView.getText().toString());
+                    found = true;
+                    pairId = textView.getText().toString();
+                    break;
+                }
+            }
+        }
+        if(!found) {
+            Log.v("TESTING","no ID found in LibraryViewActivity viewPairInfo");
+        }
+
+
         Intent intent = new Intent(this, ViewPairActivity.class);
-        intent.putExtra(Keys.PAIR_ID, "TEST_ID"); // TODO: GENERATE THIS FOR REAL
+        intent.putExtra(Keys.PAIR_ID, pairId);
         Log.v("TESTING","LibraryViewActivity: Starting intent");
         startActivity(intent);
     }
