@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Knit Picker</string>
+    <string name="title_activity_lib">图书馆</string>
+    <string name="title_home">主页面</string>
+    <string name="title_dashboard">控制面板</string>
+    <string name="title_notifications">通知</string>
+    <string name="stitch_label">织法名称</string>
+    <string name="item_label">项目名称</string>
+    <string name="name_label">作品名称</string>
+    <string name="note_label">备忘录</string>
+    <string name="form_name_label">Prénom: </string>
+    <string name="form_name_hint">Entrez le nom ici</string>
+    <string name="form_notes_label">Description/Remarques:</string>
+    <string name="form_notes_hint">Entrez la description ici</string>
+    <string name="done_hint">已完成</string>
+    <string name="email_hint">邮件</string>
+    <string name="save_text">保存</string>
+    <string name="edit_text">编辑</string>
+    <string name="photo_upload_text">上传照片</string>
+    <string name="photo_view_text">照片显示</string>
+    <string name="delete_text">删除r</string>
+    <string name="create_notice_text">创建</string>
+    <string name="save_notice_text">通知</string>
+    <string name="delete_notice_text">删除</string>
+    <string name="login_text">登陆</string>
+    <string name="password_hint">密码</string>
+    <string name="view_in_lib">图书馆视图r</string>
+    <string name="choose_text">选择r</string>
+    <string name="load_failure_text">加载失败</string>
+    <string name="upload_failure_text">上传失败</string>
+    <string name="photo_success_text">上传图片成功</string>
+    <string name="upload_unallowed_text">不允许上传</string>
+</resources>
