@@ -7,4 +7,10 @@
         android:title="New Project"
         app:showAsAction="always"
         />
+    <item
+        android:id="@+id/log"
+        android:title="Log Out"
+        android:icon="@android:drawable/ic_menu_directions"
+        app:showAsAction="always"
+        />
 </menu>

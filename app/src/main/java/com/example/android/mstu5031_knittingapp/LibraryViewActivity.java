@@ -35,11 +35,15 @@ import static java.security.AccessController.getContext;
 
 public class LibraryViewActivity extends AppCompatActivity {
 
+
     private TextView mTextMessage;
     private List<UserCreatedPair> patterns;
     private LibraryAdapter LibraryAdapter;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private RecyclerView recyclerView;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseAuth.AuthStateListener authListener;
+    private DatabaseReference userReference;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,9 +70,25 @@ public class LibraryViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library_view);
 
+        //auth = FirebaseAuth.getInstance();
+
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null){
+                    userReference = database.getReference(user.getUid());
+                    auth = FirebaseAuth.getInstance();
+                } else {
+                    startActivity(new Intent(LibraryViewActivity.this, LoginActivity.class));
+                }
+            }
+        };
+
+
         mTextMessage = (TextView) findViewById(R.id.message);
-     //   BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-     //   navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //   BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        //   navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         initialData();
 
@@ -113,7 +133,6 @@ public class LibraryViewActivity extends AppCompatActivity {
         patterns.add(new UserCreatedPair(false,"0002","scarf","vine_lace","yellow scarf","for me",""));
         Log.v("TESTING","end of filler initalize");
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
         String userId = auth.getCurrentUser().getUid();
         Log.v("TESTING","got user id");
         DatabaseReference pairRef = database.getReference("users/" + userId + "/matches");
@@ -214,6 +233,40 @@ public class LibraryViewActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LibraryViewActivity.class);
         intent.putExtra(Keys.PAIR_STATUS, Keys.PAIR_DELETED);
         startActivity(intent);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.newPro:
+
+                Intent a=new Intent(this,CreateActivity.class);
+                startActivity(a);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+            case R.id.log:
+                logOut();
+                Intent i=new Intent(this,LoginActivity.class);
+                startActivity(i);
+                return true;
+
+            //    default:
+            //         return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    public void logOut(){
+        auth.signOut();
     }
 
 

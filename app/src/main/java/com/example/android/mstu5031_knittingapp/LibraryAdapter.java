@@ -19,7 +19,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryViewHolder> {
     private Context context;
     LibraryItemClickListener clickListener;
 
-    public LibraryAdapter(List<UserCreatedPair> pattern, Context contextr) {
+    public LibraryAdapter(List<UserCreatedPair> pattern, Context context) {
         this.lib = pattern;
         this.context = context;
 

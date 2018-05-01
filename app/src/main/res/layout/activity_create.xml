@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="#B2EBF2"
+    android:background="#f7f7f4"
     android:id="@+id/card_view"
     >
 
@@ -26,10 +26,10 @@
                 android:id="@+id/text_stitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="casual"
+                android:fontFamily="standard"
                 android:gravity="center"
                 android:text="Stitch"
-                android:textColor="#F000"
+                android:textColor="#3263a3"
                 android:textSize="50dp"
                 android:textStyle="bold"
 
@@ -55,10 +55,10 @@
                 android:id="@+id/text_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="casual"
+                android:fontFamily="standard"
                 android:gravity="center"
                 android:text="Item"
-                android:textColor="#F000"
+                android:textColor="#3263a3"
                 android:textSize="50dp"
                 android:textStyle="bold"
 

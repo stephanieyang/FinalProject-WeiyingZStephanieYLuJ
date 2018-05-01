@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#f7f7f4"
     tools:context="com.example.android.mstu5031_knittingapp.MatchActivity">
 
     <LinearLayout
@@ -99,7 +100,14 @@
         android:id="@+id/btn_save_match"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save" />
+        android:drawableStart="@drawable/save_drawable"
+        android:background="@drawable/button_color"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:text="Save"
+        android:textColor="#ffff"/>
 
 
 </LinearLayout>

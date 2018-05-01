@@ -117,10 +117,10 @@ public class ItemActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
 
-//            case R.id.save:
-//                Toast.makeText(this, "Your file is saved", Toast.LENGTH_SHORT).show();
-//                return true;
-////            default:
+            case R.id.save:
+               Toast.makeText(this, "Your file is saved", Toast.LENGTH_SHORT).show();
+               return true;
+//            default:
 //                return super.onOptionsItemSelected(item);
         }
     }

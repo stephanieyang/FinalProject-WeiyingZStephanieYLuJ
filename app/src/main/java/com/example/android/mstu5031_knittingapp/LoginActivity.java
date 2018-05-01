@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void signUp(View view)
     {
-        String email = emailEditText.getText().toString();
+         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
         mrAuth.createUserWithEmailAndPassword(email, password)
@@ -103,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                         {
                             Toast.makeText(LoginActivity.this, task.getResult().getUser().getEmail() + " signed up successful",
                                     Toast.LENGTH_SHORT).show();
+
                             finish();
                         }
                     }

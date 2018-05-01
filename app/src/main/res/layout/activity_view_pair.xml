@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#f7f7f4"
     tools:context="com.example.android.mstu5031_knittingapp.ViewPairActivity">
     <TextView
         android:id="@+id/pair_name_text"
@@ -70,8 +71,14 @@
         android:id="@+id/btn_stitch_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_color"
         android:layout_weight="1"
         android:text="@string/btn_stitch_text"
+        android:textColor="#ffff"
         android:onClick="viewStitchInstructions"
         />
     <LinearLayout
@@ -105,15 +112,25 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="@string/edit_text"
+            android:textColor="#ffff"
+            android:background="@drawable/button_color"
             android:onClick="editPairInfo"
             />
         <Button
             android:id="@+id/btn_del"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_weight="1"
+            android:textColor="#ffff"
             android:text="@string/delete_text"
+            android:background="@drawable/button_color"
             android:onClick="deletePairInfo"
             />
 
@@ -122,8 +139,14 @@
         android:id="@+id/btn_photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_weight="1"
         android:text="@string/photo_upload_text"
+        android:textColor="#ffff"
+        android:background="@drawable/button_color"
         android:onClick="doPhotoAction"
         />
 
