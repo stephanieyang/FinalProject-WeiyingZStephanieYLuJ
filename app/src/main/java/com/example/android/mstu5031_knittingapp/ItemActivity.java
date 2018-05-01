@@ -1,5 +1,6 @@
 package com.example.android.mstu5031_knittingapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -62,7 +63,7 @@ public class ItemActivity extends AppCompatActivity {
         items.add(new Item("Hat1", "hat1"));
         items.add(new Item("Hat2", "hat2"));
 
-
+        final Context context = this;
 
         final ArrayList<Item> itemList = new ArrayList<Item>();
 
@@ -81,6 +82,15 @@ public class ItemActivity extends AppCompatActivity {
                 }
                 Log.d("V", "Size of list is: " + itemList.size());
                 Log.d("V", itemList.get(0).getName() + " " + itemList.get(1).getName());
+
+                // use itemList to fill in the RecyclerView
+                Log.v("TESTING","done loading itemList in ItemActivity");
+                Log.v("TESTING",String.valueOf(itemList.size()));
+                items = itemList;
+
+                itemsAdapter = new ItemAdapter(items, context);
+                recylerView1.setAdapter(new ItemAdapter(items, context));
+                recylerView1.setAdapter(itemsAdapter);
             }
 
             @Override
