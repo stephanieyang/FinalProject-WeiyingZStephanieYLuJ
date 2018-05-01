@@ -9,10 +9,10 @@
     <string name="item_label">项目名称</string>
     <string name="name_label">作品名称</string>
     <string name="note_label">备忘录</string>
-    <string name="form_name_label">Prénom: </string>
-    <string name="form_name_hint">Entrez le nom ici</string>
-    <string name="form_notes_label">Description/Remarques:</string>
-    <string name="form_notes_hint">Entrez la description ici</string>
+    <string name="form_name_label">名称标签: </string>
+    <string name="form_name_hint">默认名称</string>
+    <string name="form_notes_label">备忘录</string>
+    <string name="form_notes_hint">默认备忘录</string>
     <string name="done_hint">已完成</string>
     <string name="email_hint">邮件</string>
     <string name="save_text">保存</string>
@@ -31,4 +31,8 @@
     <string name="upload_failure_text">上传失败</string>
     <string name="photo_success_text">上传图片成功</string>
     <string name="upload_unallowed_text">不允许上传</string>
+    <string name="no_photo_text">无照片名称</string>
+    <string name="no_photo_notif_done">已完成</string>
+    <string name="no_photo_notif_undone">完成项目显示</string>
+    <string name="btn_stitch_text">编织内容</string>
 </resources>
