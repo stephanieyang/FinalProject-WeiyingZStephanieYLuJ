@@ -124,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
 
         //auth = FirebaseAuth.getInstance();
 
+        if(auth.getCurrentUser() == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -185,6 +189,12 @@ public class MainActivity extends AppCompatActivity {
         patterns.add(new UserCreatedPair(false,"0001","hat","twist_zigzag","cool hat","for me",""));
         patterns.add(new UserCreatedPair(false,"0002","scarf","vine_lace","yellow scarf","for me",""));
         Log.v("TESTING","end of filler initalize");
+
+        if(auth.getCurrentUser() == null) {
+
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            return;
+        }
 
         String userId = auth.getCurrentUser().getUid();
         Log.v("TESTING","got user id");
